@@ -1,0 +1,128 @@
+/* Dental History Specific Styles */
+.dental-history-container {
+    background-color: #f4f6f9;
+    border-radius: 0.75rem;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.dental-history-section {
+    margin-bottom: 1.5rem;
+    padding: 15px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dental-history-section-title {
+    color: #2c3e50;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.dental-procedure-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ecf0f1;
+    transition: background-color 0.2s ease;
+}
+
+.dental-procedure-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dental-procedure-date {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.dental-history-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dental-history-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dental-history-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.dental-history-checkbox input[type="checkbox"]:checked {
+    background-color: #3498db;
+}
+
+.dental-history-checkbox input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+.dental-risk-assessment {
+    background-color: #e7f3fe;
+    border-left: 4px solid #2980b9;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.dental-risk-level {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.dental-risk-low {
+    color: #27ae60;
+}
+
+.dental-risk-medium {
+    color: #f39c12;
+}
+
+.dental-risk-high {
+    color: #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dental-history-container {
+        padding: 10px;
+    }
+
+    .dental-procedure-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* Print styles for dental history */
+@media print {
+    .dental-history-container {
+        background-color: transparent;
+        border: 1px solid #e0e0e0;
+    }
+
+    .dental-history-section {
+        page-break-inside: avoid;
+    }
+}

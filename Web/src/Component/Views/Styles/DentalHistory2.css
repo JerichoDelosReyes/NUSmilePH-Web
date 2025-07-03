@@ -1,0 +1,225 @@
+/* DentalHealth2.css */
+
+/* Main layout structure */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-body {
+    display: flex;
+    flex: 1;
+    position: relative;
+  }
+  
+  /* Top Navbar styles */
+  .top-navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+  }
+  
+  /* Sidebar styles */
+  .sidebar-wrapper {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    z-index: 1020;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  /* Main content area */
+  .main-content {
+    flex: 1;
+    margin-left: 250px;
+    transition: all 0.3s ease;
+    padding: 10px;
+  }
+  
+  /* Assessment Card Styling */
+  .assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .assessment-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+  
+  .assessment-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .assessment-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #212529;
+  }
+  
+  /* Checkbox styling */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    gap: 15px;
+  }
+  
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-checkbox .form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    cursor: pointer;
+  }
+  
+  .custom-checkbox .form-check-label {
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .normal-checkbox .form-check-input:checked {
+    background-color: #00b894;
+    border-color: #00b894;
+  }
+  
+  .abnormal-checkbox .form-check-input:checked {
+    background-color: #ff7675;
+    border-color: #ff7675;
+  }
+  
+  /* Description input styling */
+  .description-input {
+    margin-top: 12px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ced4da;
+  }
+  
+  .description-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Additional options for TMJ */
+  .additional-options {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #dee2e6;
+  }
+  
+  /* Button styling */
+  .btn {
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    padding: 8px 16px;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card styling */
+  .card {
+    border-radius: 12px;
+    border: none;
+  }
+  
+  .card-header {
+    border-radius: 12px 12px 0 0 !important;
+    padding: 15px 20px;
+  }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 992px) {
+    .sidebar-wrapper {
+      left: -250px;
+    }
+    
+    .sidebar-wrapper.open {
+      left: 0;
+    }
+    
+    .main-content {
+      margin-left: 0;
+    }
+  
+    .assessment-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    /* Add overlay when sidebar is open on mobile */
+    .sidebar-open::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1010;
+    }
+  }
+  
+  /* Small devices adjustments */
+  @media (max-width: 576px) {
+    .assessment-card {
+      padding: 12px;
+    }
+    
+    .checkbox-group {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  
+  /* Form action buttons responsive styles */
+.form-action-buttons {
+  padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .form-action-buttons .btn {
+    margin-bottom: 10px;
+  }
+}
+
+/* Additional button hover and focus states */
+.btn-submit {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-back {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.btn-back:hover,
+.btn-back:focus {
+  background-color: #545b62;
+  border-color: #545b62;
+}

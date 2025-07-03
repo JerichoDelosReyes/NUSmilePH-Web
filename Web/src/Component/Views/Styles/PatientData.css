@@ -1,0 +1,476 @@
+/* PatientData.css - Complete file with enhancements */
+
+/* Dashboard Layout */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Top Navbar customization */
+.top-navbar {
+  height: 70px;
+  background-color: #000080;
+  color: white;
+  z-index: 1030;
+}
+
+/* Main Dashboard Layout */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #000080;
+  padding-top: 20px;
+  transition: all 0.3s;
+}
+
+/* Page content wrapper - new structure */
+.page-content-wrapper {
+  display: flex;
+  flex: 1 0 auto; /* Grow but don't shrink */
+  margin-top: 70px;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #ffffff;
+  overflow-y: auto;
+  padding-bottom: 60px; /* Add space for footer */
+}
+
+/* Card styling */
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #000080 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0 !important;
+  border-bottom: none !important; /* Ensure no border at the bottom */
+}
+
+/* Ensure headers inside card-body have white text and no line */
+.card-header h5 {
+  color: white; /* Make the text color white */
+  margin: 0;
+  font-size: 18px;
+  border-bottom: none !important; /* Remove any unwanted bottom line */
+}
+
+/* Specific adjustments for Emergency Contact Person and Reason for Visit section */
+.card-header.bg-info,
+.card-header.bg-warning {
+  border-bottom: none !important; /* Remove the line under these sections */
+  color: white; /* Ensure the text is white */
+}
+
+.card-body {
+  padding: 20px !important;
+}
+
+/* Form styling */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #212529;
+}
+
+.form-control {
+  padding: 0.575rem 0.75rem;
+  font-size: 0.95rem;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  height: calc(1.5em + 0.75rem + 2px);
+}
+
+.form-control:focus {
+  border-color: #000080;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 128, 0.25);
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Ensure placeholder text is visible but distinct */
+.form-control::placeholder {
+  color: #aaaaaa;
+  opacity: 0.8;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #000080 !important;
+  border-color: #000080 !important;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #00006a !important;
+  border-color: #00006a !important;
+}
+
+.btn-outline-secondary {
+  color: #000080 !important;
+  border-color: #000080 !important;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #000080 !important;
+  color: white !important;
+  border-color: #000080 !important;
+}
+
+/* Text colors */
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Responsive Button Container */
+.button-container-responsive {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Button styling for uniformity */
+.action-button {
+  min-width: 120px;
+  padding: 8px 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+  transition: all 0.3s ease;
+}
+
+/* Ensure variant colors work with your theme */
+.btn-success {
+  background-color: #198754 !important;
+  border-color: #198754 !important;
+  color: white !important;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #157347 !important;
+  border-color: #146c43 !important;
+}
+
+.btn-outline-danger {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+.btn-outline-danger:hover, .btn-outline-danger:focus {
+  background-color: #dc3545 !important;
+  color: white !important;
+  border-color: #dc3545 !important;
+}
+
+/* Override any Bootstrap margins that might interfere */
+.btn {
+  margin: 0 !important;
+}
+
+/* NEW FORM ENHANCEMENTS */
+
+/* Form section styling */
+.patient-form .form-section {
+  position: relative;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.patient-form .section-title {
+  color: #000080;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.patient-form hr {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-color: #e0e0e0;
+  opacity: 0.5;
+}
+
+/* Validation styling */
+.patient-form .form-control.is-invalid,
+.patient-form .form-select.is-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.patient-form .invalid-feedback {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+
+/* Help text styling */
+.form-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Select form control styling */
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 0.575rem 2.25rem 0.575rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: calc(1.5em + 0.75rem + 2px);
+}
+
+.form-select:focus {
+  border-color: #000080;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 128, 0.25);
+}
+
+/* Textarea height override */
+textarea.form-control {
+  height: auto;
+  min-height: 100px;
+}
+
+/* Error Alert styling */
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
+/* Required field indicator */
+.form-label .text-danger {
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Footer styling */
+footer {
+  width: 100%;
+  background-color: #000080;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
+  margin-top: auto;
+}
+
+footer .footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+footer .footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  font-size: 0.9rem;
+}
+
+footer .footer-links a:hover {
+  opacity: 0.8;
+}
+
+footer .footer-copyright {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* RESPONSIVE STYLES */
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .patient-form .form-section {
+    padding: 18px;
+  }
+}
+
+/* Fix for xs-sm breakpoint to ensure side-by-side columns */
+@media (max-width: 575.98px) {
+  .row .col-sm-4, .row .col-sm-6 {
+    width: 100%; /* Full width on very small screens */
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    padding-top: 15px;
+  }
+  
+  .main-content {
+    padding-bottom: 80px;
+  }
+  
+  .card-body {
+    padding: 15px !important;
+  }
+  
+  .button-container-responsive {
+    justify-content: center;
+  }
+  
+  .action-button {
+    min-width: 100px;
+  }
+  
+  .patient-form .form-section {
+    padding: 15px;
+  }
+  
+  .patient-form .section-title {
+    font-size: 1.1rem;
+  }
+  
+  footer {
+    flex-direction: column;
+    padding: 15px 10px;
+    text-align: center;
+  }
+  
+  footer .footer-brand,
+  footer .footer-links,
+  footer .footer-copyright {
+    margin: 5px 0;
+  }
+  
+  footer .footer-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-navbar {
+    height: 60px;
+  }
+  
+  .sidebar {
+    width: 50px;
+  }
+  
+  .main-content {
+    padding-bottom: 100px;
+  }
+  
+  .card-body {
+    padding: 12px !important;
+  }
+  
+  .form-control {
+    font-size: 0.9rem;
+  }
+  
+  .button-container-responsive {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .action-button {
+    width: 100%;
+    margin-bottom: 10px;
+    min-width: unset;
+  }
+  
+  .patient-form .form-section {
+    padding: 12px;
+  }
+  
+  .patient-form .section-title {
+    font-size: 1rem;
+  }
+  
+  footer {
+    padding: 12px 8px;
+  }
+  
+  footer .footer-links {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+  
+  footer .footer-copyright {
+    font-size: 0.75rem;
+  }
+}
+.main-content {
+  background-color: #ffffff !important;
+}
+
+.dashboard-container {
+  background-color: #ffffff !important;
+}
+
+body, html {
+  background-color: #ffffff !important;
+}
+
+/* Make sure content area fills the screen */
+.content-wrapper {
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding-bottom: 60px; /* Add space for footer */
+}

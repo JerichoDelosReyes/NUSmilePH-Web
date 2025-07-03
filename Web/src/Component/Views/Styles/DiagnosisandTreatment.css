@@ -1,0 +1,223 @@
+/* PhysicalAssessment.css - Updated with signature styles */
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .dashboard-body {
+    display: flex;
+    flex: 1;
+  }
+  
+  .top-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+  }
+  
+  /* Form Styling */
+  .checkbox-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .custom-checkbox {
+    margin-right: 5px;
+  }
+  
+  .custom-checkbox-label {
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  
+  /* Selected Items / Tags */
+  .selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .selected-tag {
+    display: flex;
+    align-items: center;
+    background-color: #e9f0ff;
+    border: 1px solid #ccdcff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .tag-check-icon {
+    color: #0d6efd;
+    margin-right: 8px;
+  }
+  
+  .tag-text {
+    margin-right: 8px;
+  }
+  
+  .tag-remove-btn {
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+  .tag-remove-btn:hover {
+    color: #dc3545;
+  }
+  
+  /* Input with button */
+  .input-with-button {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input-with-button .form-control {
+    flex: 1;
+  }
+  
+  /* Form actions */
+  .form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  /* Card styling */
+  .card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .card-header {
+    padding: 15px 20px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  /* Diagnosis and Treatment specific styles */
+  .diagnosis-textarea, .treatment-textarea {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .diagnosis-textarea:focus, .treatment-textarea:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+  
+  .consent-section {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+  }
+  
+  .consent-text {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  
+  .consent-checkbox label, .refuse-checkbox label {
+    font-weight: 500;
+  }
+  
+  .signature-section {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+  }
+  
+  .signature-label {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .signature-info {
+    margin-top: 0.5rem;
+    font-size: 13px;
+  }
+  
+  .signature-preview {
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  /* Signature canvas styles */
+  .signature-container {
+    width: 100%;
+  }
+  
+  .signature-canvas-wrapper {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .signature-canvas {
+    touch-action: none;
+    background-color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .checkbox-options {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .selected-items {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .form-actions .btn {
+      width: 100%;
+      margin-right: 0 !important;
+      margin-bottom: 10px;
+    }
+    
+    .signature-button {
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .signature-label {
+      width: 100%;
+    }
+  }
+

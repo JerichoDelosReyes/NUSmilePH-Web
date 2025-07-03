@@ -1,0 +1,163 @@
+/* PatientProfile.css */
+
+/* Dashboard Layout */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Top Navbar customization */
+  .top-navbar {
+    height: 70px;
+    background-color: #000080;
+    color: white;
+    z-index: 1030;
+  }
+  
+  /* Main Dashboard Layout */
+  .dashboard-body {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #000080;
+    padding-top: 20px;
+    transition: all 0.3s;
+  }
+  
+  .main-content {
+    flex: 1;
+    background-color: #f5f6fa;
+    overflow-y: auto;
+  }
+  
+  /* Back button */
+  .back-button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    background-color: #4a4af4;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: -1px;
+  }
+  
+  /* Cards */
+  .profile-card, .info-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 15px;
+  }
+  
+  /* Avatar */
+  .patient-avatar {
+    margin-bottom: 15px;
+  }
+  
+  .avatar-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #4a4af4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  
+  /* Section titles */
+  .info-section-title {
+    display: flex;
+    align-items: center;
+    color: #4a4af4;
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  /* Info items */
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  
+  .info-label {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 2px;
+  }
+  
+  .info-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212529;
+  }
+  
+  /* Bottom Navigation */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #6c757d;
+    font-size: 12px;
+  }
+  
+  .nav-item.active {
+    color: #4a4af4;
+    font-weight: 500;
+  }
+  
+  .nav-item i, .nav-item svg {
+    margin-bottom: 4px;
+    font-size: 20px;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 992px) {
+    .sidebar {
+      width: 200px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none; /* Hide sidebar on mobile */
+    }
+    
+    .profile-header {
+      border-radius: 8px 8px 0 0;
+      padding: 12px 15px;
+    }
+    
+    .back-button {
+      padding: 4px 8px;
+    }
+  }

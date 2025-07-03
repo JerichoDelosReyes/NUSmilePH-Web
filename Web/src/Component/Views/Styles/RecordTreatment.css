@@ -1,0 +1,274 @@
+/* RecordTreatment.css */
+
+/* General form styling */
+.treatment-record-card {
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.treatment-record-card .card-header {
+  padding: 1rem 1.5rem;
+}
+
+.form-control-lg {
+  border-radius: 0.375rem;
+  border: 1px solid #ced4da;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.form-control-lg:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  border-color: #86b7fe;
+}
+
+/* Section styling */
+.section-header h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+.section-header hr {
+  opacity: 0.15;
+  border-color: #333;
+}
+
+/* Button common styling - Enhanced for better responsiveness */
+.btn {
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.2;
+  min-height: 2.75rem;
+  touch-action: manipulation;
+}
+
+.btn i {
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Button variants */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* View Records button - Responsive adjustments */
+.view-records-btn {
+  font-weight: 500;
+  width: 100%;
+}
+
+/* Action buttons enhanced for all devices */
+.form-action-buttons .btn {
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.form-action-buttons .btn-submit {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.form-action-buttons .btn-submit:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-action-buttons .btn-back {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.form-action-buttons .btn-back:hover {
+  background-color: #6c757d;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Signature area styling - Enhanced for responsive design */
+.signature-container {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  height: 100%;
+}
+
+.signature-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.75rem;
+}
+
+.signature-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.signature-btn-group .btn {
+  min-height: 3rem;
+}
+
+.signature-preview {
+  background-color: #fff !important;
+  border-radius: 0.375rem;
+}
+
+/* Responsive adjustments - Enhanced for better mobile experience */
+@media (max-width: 991.98px) {
+  .signature-container {
+    margin-bottom: 1rem;
+  }
+  
+  .form-action-buttons .btn {
+    min-height: 3.25rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .btn {
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .form-action-buttons .btn {
+    padding: 0.875rem 1rem;
+  }
+  
+  .signature-container {
+    padding: 1rem;
+  }
+  
+  .treatment-record-card .card-body {
+    padding: 1.25rem;
+  }
+  
+  /* Improve button click targets on mobile */
+  .signature-btn-group .btn {
+    margin-bottom: 0.5rem;
+    min-height: 3.25rem;
+  }
+  
+  /* Responsive icon handling */
+  .btn i {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 575.98px) {
+  .btn {
+    padding: 0.75rem 0.5rem;
+    width: 100%;
+  }
+  
+  /* Stack buttons when very small screens */
+  .signature-btn-group {
+    gap: 0.5rem;
+  }
+  
+  .form-action-buttons .btn {
+    margin-bottom: 0.75rem;
+    min-height: 3.5rem;
+  }
+  
+  /* Adjust icon and spacing for tiny screens */
+  .btn i {
+    margin-right: 0.35rem;
+  }
+}
+
+/* Signature Modal styling */
+.signature-modal .modal-content {
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.signature-modal .modal-header {
+  padding: 1rem 1.5rem;
+}
+
+.signature-modal .modal-footer {
+  padding: 1rem 1.5rem;
+}
+
+/* Modal responsive adjustments */
+@media (max-width: 767.98px) {
+  .signature-modal .modal-body {
+    padding: 1rem;
+  }
+  
+  .signature-modal .modal-footer .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Additional responsive utility classes */
+.mb-sm-0 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .mb-sm-3 {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Form validation styling */
+.was-validated .form-control:invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.was-validated .form-control:valid {
+  border-color: #198754;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

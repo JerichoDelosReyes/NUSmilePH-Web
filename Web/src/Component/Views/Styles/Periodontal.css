@@ -1,0 +1,215 @@
+/* CSS for the fixed column periodontal table */
+
+.periodontal-table-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Fixed left column */
+.fixed-column {
+  flex-shrink: 0;
+  width: 200px; /* Wider column for category text */
+  background-color: #fff;
+  z-index: 2;
+  border-right: 2px solid #dee2e6; /* Visual separator */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable columns */
+.scrollable-columns {
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scrollbar-width: thin;
+}
+
+/* Custom scrollbar styling */
+.scrollable-columns::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-columns::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.scrollable-columns::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.scrollable-columns::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Scroll indicators */
+.scroll-indicator-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  transition: opacity 0.3s;
+}
+
+/* Ensure both tables take full height and display properly */
+.fixed-column table,
+.scrollable-columns table {
+  width: 100%;
+  margin-bottom: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed-column table {
+  border-right: none;
+}
+
+.scrollable-columns table {
+  border-left: none;
+}
+
+/* Match the row heights between tables */
+.fixed-column tr,
+.scrollable-columns tr {
+  height: 52px; /* Set a fixed height for rows to ensure alignment */
+}
+
+/* Style adjustments for category cells */
+.category-header {
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f8f9fa;
+  height: 46px; /* Match header height with scrollable table */
+  border-bottom: 1px solid #dee2e6;
+}
+
+.category-cell {
+  text-align: left;
+  padding-left: 15px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+.category-row {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Style for tooth number headers */
+.tooth-number {
+  min-width: 70px; /* Ensure tooth number columns have enough width */
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f8f9fa;
+  font-weight: 500;
+  border-bottom: 1px solid #dee2e6;
+  height: 46px;
+}
+
+/* Style for input cells */
+.cell-wrapper {
+  padding: 4px;
+  min-width: 70px;
+  max-width: 70px;
+  border: 1px solid #dee2e6;
+}
+
+.periodontal-input {
+  width: 100%;
+  padding: 0.25rem;
+  border-radius: 0.2rem;
+  font-size: 0.875rem;
+  height: 38px;
+  border: 1px solid #ced4da;
+}
+
+/* Highlight selected cell */
+.selected-cell .periodontal-input {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Remove default focus outline as we have our own indicator */
+.periodontal-input:focus {
+  outline: none;
+}
+
+/* Ensure tables align properly */
+.fixed-column th:first-child,
+.fixed-column td:first-child {
+  border-right: none;
+}
+
+.scrollable-columns th:first-child,
+.scrollable-columns td:first-child {
+  border-left: none;
+}
+
+/* 1. Allow horizontal scrolling on the wrapper */
+.periodontal-table-wrapper {
+  overflow-x: auto;
+}
+
+/* 2. Give the table a minimum width so columns don’t collapse */
+.periodontal-table {
+  min-width: 800px; /* adjust as needed: roughly (number_of_cols × avg_col_width) */
+}
+
+/* 3. Make the first column sticky */
+.periodontal-table th.category-header,
+.periodontal-table td.category-cell {
+  position: sticky;
+  left: 0;
+  background: #fff;    /* match your table background */
+  z-index: 2;          /* sit above the other cells when scrolling */
+}
+
+/* 4. Optional: keep header row always visible too */
+.periodontal-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8f9fa; /* or whatever your header bg is */
+  z-index: 3;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fixed-column {
+    width: 120px; /* Smaller on mobile */
+  }
+  
+  .category-cell {
+    font-size: 0.8rem;
+    padding-left: 8px;
+  }
+  
+  .cell-wrapper,
+  .tooth-number {
+    min-width: 60px;
+    max-width: 60px;
+  }
+}

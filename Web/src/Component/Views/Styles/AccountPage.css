@@ -1,0 +1,464 @@
+/* AccountPage Styles - Enhanced for Material-UI compatibility with consistent widths */
+.account-page {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Animation for tab transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%; /* Ensure full width */
+}
+
+/* Ensure all content sections have consistent width */
+.table-container, 
+.tally-sheet-container, 
+.info-message,
+.stats-container,
+.case-filter-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make tables full width */
+.MuiTable-root {
+  width: 100%;
+}
+
+/* Status badge styling for patients */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  gap: 5px;
+}
+
+.status-badge.active {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-badge.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #FFC107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.status-badge.info {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.status-badge.secondary {
+  background-color: rgba(158, 158, 158, 0.1);
+  color: #9E9E9E;
+  border: 1px solid rgba(158, 158, 158, 0.3);
+}
+
+.status-badge.approved {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-badge.pending {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.status-badge.rejected {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* Messages */
+.info-message {
+  padding: 1.5rem;
+  background-color: #f5f9ff;
+  border-radius: 8px;
+  border-left: 5px solid #4040DD;
+  color: #555;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.loading-spinner,
+.error-message,
+.no-data-message {
+  padding: 3rem 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border-left: 5px solid #d32f2f;
+}
+
+/* Stats cards */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #ddd;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-title {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+}
+
+/* Filter buttons styles */
+.case-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.case-filter-container h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(64, 64, 221, 0.3);
+  background-color: white;
+  color: #4040DD;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+.filter-button:hover {
+  background-color: rgba(64, 64, 221, 0.04);
+  border-color: #4040DD;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.filter-button.active {
+  background-color: #4040DD;
+  color: white;
+  border-color: #4040DD;
+  box-shadow: 0 3px 8px rgba(64, 64, 221, 0.3);
+}
+
+/* Table related styles */
+.table-container {
+  overflow-x: auto; /* Important for horizontal scrolling on mobile */
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.MuiTableContainer-root {
+  width: 100% !important;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.action-link {
+  color: #4040DD;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-link:hover {
+  background-color: rgba(64, 64, 221, 0.1);
+}
+
+/* Simplified Tally Sheet Styles */
+.tally-sheet-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  min-height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.tally-sheet-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  width: 100%;
+}
+
+.tally-header-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.tally-header-subtitle {
+  color: #666;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.tally-content {
+  padding: 1.25rem 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+.tally-category-section {
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.tally-category-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tally-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.tally-category-header:hover {
+  background-color: #f0f2ff;
+}
+
+.tally-items {
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+.tally-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 1px solid #f9f9f9;
+  width: 100%;
+}
+
+.tally-item:hover {
+  background-color: rgba(64, 64, 221, 0.05);
+}
+
+.tally-item-icon {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  color: #4040DD;
+}
+
+.tally-item-text {
+  flex: 1;
+  color: #4040DD;
+  font-weight: 500;
+}
+
+.tally-item-arrow {
+  display: flex;
+  align-items: center;
+  color: #999;
+}
+
+/* Back button styling */
+.compact-back-btn {
+  margin-bottom: 1.5rem;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 4px;
+  border-color: #ced4da;
+  transition: all 0.2s ease;
+}
+
+.compact-back-btn:hover {
+  background-color: #000080;
+  color: white;
+}
+
+/* Ensure consistent tab panel styling */
+.MuiTabs-root {
+  width: 100%;
+}
+
+/* Make sure tab panels are full width */
+[role="tabpanel"] {
+  width: 100%;
+  padding: 0 !important;
+}
+
+/* Fix clinician and other role-specific views */
+.clinician-view,
+.clinical-chair-view,
+.clinical-instructor-view {
+  width: 100%;
+}
+
+/* Ensure MUI Paper components maintain full width */
+.MuiPaper-root {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Consistent padding for inner content */
+.MuiBox-root {
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .case-filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .filter-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.75rem;
+  }
+  
+  .tally-sheet-header-bar {
+    padding: 1rem;
+  }
+  
+  .tally-header-title {
+    font-size: 1.25rem;
+  }
+  
+  .tally-header-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tally-category-header, 
+  .tally-item {
+    padding: 0.85rem 1rem;
+  }
+  
+  .tally-item-icon {
+    margin-right: 0.75rem;
+  }
+  
+  .filter-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .tally-content, 
+  .submitted-log-button-container {
+    padding: 0.75rem;
+  }
+}

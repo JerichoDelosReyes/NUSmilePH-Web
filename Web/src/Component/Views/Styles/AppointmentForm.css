@@ -1,0 +1,267 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto !important; /* Force vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* ======================================
+   Main layout containers - FIXED LAYOUT FOR SCROLLING
+   ====================================== */
+.dashboard-container {
+  display: block; /* Changed from flex to ensure proper scrolling */
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Page content wrapper */
+.page-content-wrapper {
+  display: block; /* Changed from flex to block for better scrolling */
+  width: 100%;
+}
+
+/* Make sure sidebar doesn't interfere with scrolling */
+.sidebar {
+  position: fixed;
+  height: 100%;
+  z-index: 999;
+}
+
+/* Important: Make main content area scrollable and centered */
+.main-content {
+  width: 100%;
+  display: block; /* Changed from flex to block */
+  margin: 0 auto;
+  padding-top: 60px; /* Space for fixed header */
+  padding-bottom: 70px; /* Space for footer */
+  overflow-y: auto;
+}
+
+/* Center content horizontally */
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Reduced from 1800px for better centering */
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.appointment-form-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 0;
+}
+
+.appointment-form-side {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin: 0 auto 30px; /* Center horizontally and add bottom margin */
+  width: 100%;
+}
+
+/* Footer styling - fixed position to ensure visibility */
+footer {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  position: relative; /* Changed from fixed to allow scrolling to it */
+  bottom: 0;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Card and form styling */
+.card {
+  border: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 24px !important;
+  border-radius: 8px !important;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #4040DD !important;
+  color: white !important;
+  padding: 12px 20px !important;
+  border-radius: 8px 8px 0 0 !important;
+  border-bottom: none !important;
+  text-align: center;
+}
+
+.card-header h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 20px !important;
+}
+
+/* Form controls styling */
+.form-control {
+  height: 45px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  font-size: 15px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-control:focus {
+  border-color: #4040DD;
+  box-shadow: 0 0 0 0.25rem rgba(64, 64, 221, 0.25);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #4040DD !important;
+  border-color: #4040DD !important;
+  padding: 10px 24px !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  margin: 0 auto;
+}
+
+.btn-secondary {
+  background-color: #ffffff !important;
+  border-color: #00245A !important;
+  color: #00245A !important;
+  padding: 10px 24px !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  margin: 10px auto 0;
+}
+
+.text-center {
+  text-align: center !important;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Form labels */
+.form-label {
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Ensure inputs take full width */
+.row > div {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* Back button styling - centered on mobile */
+.compact-back-btn {
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto !important;
+  }
+
+  /* Ensure main content is scrollable */
+  .main-content {
+    overflow-y: auto;
+    display: block;
+    padding-top: 50px; /* Adjusted for mobile */
+  }
+
+  .content-wrapper {
+    padding: 10px;
+  }
+
+  .appointment-form-side {
+    padding: 15px 10px;
+  }
+  
+  .card-header {
+    text-align: center;
+    padding: 10px !important;
+  }
+  
+  .card-body {
+    padding: 15px 10px !important;
+  }
+  
+  .form-control {
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  /* Center buttons */
+  .btn-primary, .btn-secondary {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+  
+  /* Improve back button visibility */
+  .compact-back-btn {
+    width: auto;
+    margin: 10px auto;
+  }
+}
+
+/* Small screens like iPhone SE */
+@media (max-width: 375px) {
+  .appointment-form-side {
+    padding: 10px 5px;
+  }
+  
+  .content-wrapper {
+    padding: 5px;
+  }
+  
+  .card-body {
+    padding: 10px 5px !important;
+  }
+  
+  .form-control {
+    height: 38px;
+    font-size: 13px;
+  }
+  
+  .form-label {
+    font-size: 13px;
+    padding-left: 5px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 90%;
+  }
+}
+
+/* Force scrolling on all devices */
+@media screen {
+  html, body {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+}

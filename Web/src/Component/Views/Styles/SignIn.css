@@ -1,0 +1,544 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  background-color: #f8f9fa;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Main content area that contains logo and form */
+.auth-content {
+  display: flex;
+  flex: 1;
+  width: auto;
+}
+
+/* Logo Section - Main styling */
+.logo-section {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  width: auto;
+}
+
+.nu-logo {
+  max-width: 90%; 
+  max-height: 80vh;
+  height: 70vh;
+  width: 70vh;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); /* Subtle glow for the logo */
+}
+
+/* Form Section (Right side) */
+.form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
+  border: 1px solid #f0f0f0; /* Subtle border */
+}
+
+/* Login Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00245A; /* NU Blue */
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  /* Add padding-top to reserve space for the floating label */
+  padding-top: 1.25rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: black;
+  /* Ensure consistent height */
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  outline: 0;
+  border-color: #00245A; /* Match NU blue */
+  background-color: #ffffff; /* Change background to white on focus for better contrast */
+  box-shadow: 0 0 0 3px rgba(0, 36, 90, 0.1); /* Add subtle focus ring */
+}
+
+.input-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1.9rem; /* Adjusted to center in input field when not focused */
+  padding: 0 0.25rem;
+  color: #6c757d;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth easing */
+  pointer-events: none;
+  background-color: transparent;
+  font-size: 1rem;
+  transform-origin: left top;
+  z-index: 1;
+}
+
+/* Fixed floating label behavior */
+.input-field:focus + label,
+.input-field:not(:placeholder-shown) + label {
+  top: 0; /* Move to the reserved space at the top */
+  left: 0.8rem;
+  font-size: 0.85rem;
+  color: #00245A; /* Use NU blue for consistency */
+  background-color: #ffffff; /* White background to overlay the border */
+  padding: 0 0.5rem; /* Increased padding for better visibility */
+  font-weight: 500; /* Slightly bolder when floated */
+  transform: translateY(0);
+  /* Enhanced text shadow for better readability */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.9);
+  /* Add a subtle border for better definition */
+  border-radius: 2px;
+}
+
+/* Hover effect for input field */
+.input-field:hover:not(:focus) {
+  border-color: #adb5bd;
+  background-color: #ffffff;
+}
+
+/* Enhanced focus state for label */
+.input-field:focus + label {
+  color: #00245A;
+  font-weight: 600;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 1);
+}
+
+/* Valid state styling */
+.input-field.is-valid {
+  border-color: #28a745;
+  background-color: #f8fff9;
+}
+
+.input-field.is-valid + label {
+  color: #28a745;
+}
+
+/* Invalid state styling */
+.input-field.is-invalid {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+}
+
+.input-field.is-invalid + label {
+  color: #dc3545;
+}
+
+/* Ensure proper stacking context */
+.input-group {
+  isolation: isolate;
+}
+
+/* Animation for smooth transitions */
+@keyframes labelFloat {
+  from {
+    top: 1.9rem;
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  to {
+    top: 0;
+    font-size: 0.85rem;
+    color: #00245A;
+  }
+}
+
+/* Apply animation when label floats */
+.input-field:focus + label,
+.input-field:not(:placeholder-shown) + label {
+  animation: labelFloat 0.65s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* Forgot Password */
+.forgot-password-container {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+  color: #000080;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Fix link colors to match branding */
+.forgot-password, .signup-link a {
+  color: #000080; /* Match NU blue */
+}
+
+/* Sign In Button */
+.signin-button {
+  width: 100%;
+  padding: 0.75rem;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  background-color: #000080; /* More accurate NU blue */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.signin-button:hover {
+  background-color: #21237c; /* Slightly darker on hover */
+}
+
+/* Sign Up Link */  
+.signup-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #000080;
+}
+
+.signup-link a {
+  color: #4285f4;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  color: #21237c;
+  text-decoration: underline;
+}
+
+/* OTP Dialog */
+.otp-dialog {
+  padding: 1.5rem;
+}
+
+/* Animation effect */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-form-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Additional fixes for header and footer */
+header, footer {
+  width: 100%;
+  background-color: #00245A; /* More accurate NU blue */
+  color: white;
+}
+
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+footer {
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* ENHANCED RESPONSIVE DESIGN FOR LOGO SCALING */
+
+/* Large screens - default logo size */
+@media (min-width: 1400px) {
+  .nu-logo {
+    height: 75vh;
+    width: 75vh;
+    max-width: 85%;
+  }
+}
+
+/* Desktop - slightly smaller */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .nu-logo {
+    height: 65vh;
+    width: 65vh;
+    max-width: 80%;
+  }
+}
+
+/* Laptop screens */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .nu-logo {
+    height: 55vh;
+    width: 55vh;
+    max-width: 75%;
+  }
+}
+
+/* Tablet landscape and below - switch to column layout */
+@media (max-width: 991px) {
+  .auth-content {
+    flex-direction: column;
+  }
+  
+  .logo-section, .form-section {
+    flex: none;
+    width: 100%;
+  }
+  
+  .logo-section {
+    margin-top: 40px;
+    padding: 1.5rem;
+    height: auto;
+    min-height: 200px;
+  }
+  
+  .nu-logo {
+    height: 45vh;
+    width: 45vh;
+    max-width: 70%;
+    max-height: 300px;
+  }
+  
+  .form-section {
+    padding: 2rem 1rem;
+  }
+  
+  .login-form-container {
+    max-width: 500px;
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .logo-section {
+    padding: 1.25rem;
+    min-height: 180px;
+  }
+  
+  .nu-logo {
+    height: 35vh;
+    width: 35vh;
+    max-width: 65%;
+    max-height: 250px;
+  }
+}
+
+/* Large phones */
+@media (max-width: 576px) {
+  .login-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .login-header p {
+    font-size: 0.9rem;
+  }
+  
+  .logo-section {
+    margin-top: 80px;
+    padding: 1rem;
+    min-height: 150px;
+  }
+  
+  .nu-logo {
+    height: 28vh;
+    width: 28vh;
+    max-width: 60%;
+    max-height: 200px;
+  }
+  
+  .form-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .login-form-container {
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .input-field {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .signin-button {
+    padding: 0.6rem;
+  }
+  
+  .forgot-password, .signup-link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .logo-section {
+    padding: 0.75rem;
+    min-height: 120px;
+  }
+  
+  .nu-logo {
+    height: 22vh;
+    width: 22vh;
+    max-width: 55%;
+    max-height: 150px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 320px) {
+  .logo-section {
+    padding: 0.5rem;
+    min-height: 100px;
+  }
+  
+  .nu-logo {
+    height: 18vh;
+    width: 18vh;
+    max-width: 50%;
+    max-height: 120px;
+  }
+}
+
+/* For landscape orientation on mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-content {
+    flex-direction: row; /* Keep side by side in landscape */
+  }
+  
+  .logo-section {
+    padding: 0.5rem;
+    flex: 0.6; /* Make logo section smaller in landscape */
+  }
+  
+  .form-section {
+    flex: 1.4; /* Give more space to form in landscape */
+  }
+  
+  .nu-logo {
+    height: 75vh; /* Use more of the available height in landscape */
+    width: 75vh;
+    max-width: 90%;
+    max-height: none; /* Remove height restriction in landscape */
+  }
+}
+
+/* For very short landscape screens */
+@media (max-height: 400px) and (orientation: landscape) {
+  .nu-logo {
+    height: 60vh;
+    width: 60vh;
+    max-width: 85%;
+  }
+}
+
+/* Add these styles to reduce the size of error messages */
+
+/* More compact error message styling */
+.text-danger {
+  font-size: 0.75rem; /* Fixed the extremely small font size */
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  color: #dc3545;
+  padding-left: 0.5rem;
+  line-height: 1.2;
+  min-height: 1rem; /* Reserve space to prevent layout shift */
+  display: block; /* Ensure consistent display */
+}
+
+/* Reduce error background styling */
+.input-field.is-invalid {
+  border-color: #dc3545;
+  border-width: 1px;
+  background-image: none;
+  /* Maintain same padding and sizing */
+  padding: 0.75rem 1rem;
+}
+
+.input-field.is-valid {
+  border-color: #28a745;
+  border-width: 1px;
+  /* Maintain same padding and sizing */
+  padding: 0.75rem 1rem;
+}
+
+/* Subtle error indication instead of large background */
+.input-group .is-invalid + .text-danger {
+    display: inline-block;
+    position: relative;
+    background-color: transparent; /* Remove background */
+    padding: 2px 0; /* Minimal padding */
+    margin-top: 2px;
+}
+
+/* Override any Material UI styles for compact error messages */
+.MuiFormHelperText-root.text-danger {
+    font-size: 0.7rem;
+    margin: 2px 0 0 0;
+    padding-left: 0.5rem;
+}
+
+/* Add a smaller left border instead of a full background */
+.input-group .text-danger {
+    border-left: 2px solid #dc3545;
+    padding-left: 4px;
+}
+
+/* Animation for the smaller error messages */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

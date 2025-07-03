@@ -1,0 +1,351 @@
+/* Profile Styles */
+.profile-content {
+  margin: 1.5em auto; /* Changed to auto for horizontal centering */
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Centered content wrapper */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 15px; /* Add some padding on the sides */
+}
+
+/* Profile Header Styles */
+.profile-header {
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2em;
+  padding: 1.5em;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.profile-picture-container {
+  display: flex;
+  flex: 1;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.profile-picture {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #4040DD;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+}
+
+.profile-info {
+  flex: 3;
+  min-width: 300px;
+  padding: 1em;
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8em;
+  color: #333;
+  font-weight: 600;
+}
+
+.profile-info p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 0.5em;
+  color: #444;
+  display: flex;
+  align-items: center;
+}
+
+.profile-info p strong {
+  width: 160px;
+  font-weight: 600;
+  display: inline-block;
+  color: #333;
+}
+
+/* Basic Information Form Styles */
+.profile-basic-info {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5em;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-basic-info h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.2em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #4040DD;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2em;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.2em;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #000000; /* Make input text black */
+}
+
+.form-group input:focus {
+  border-color: #4040DD;
+  box-shadow: 0 0 0 3px rgba(64, 64, 221, 0.15);
+  outline: none;
+  color: #000000; /* Keep text black when focused */
+}
+
+.form-group input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+  color: #000000; /* Make disabled input text black as well */
+}
+
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: -10px;
+  background-color: white;
+  padding: 0 5px;
+  font-size: 0.8rem;
+  color: #777;
+  transition: all 0.3s ease;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 1.5em;
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #4040DD;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3333bb;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* Main content adjustments for better centering */
+.main-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Match profile content max-width */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .profile-content {
+    margin: 1em auto; /* Keep horizontal centering */
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-picture-container {
+    margin-bottom: 1.5em;
+    width: 100%;
+  }
+  
+  .profile-info {
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5em;
+    align-items: center;
+  }
+  
+  .profile-info p {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .profile-info p strong {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.2em;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-content {
+    margin: 0.5em auto; /* Keep horizontal centering */
+  }
+
+  .profile-header, .profile-basic-info {
+    padding: 1em;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.4rem;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Profile Styles */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Center the profile content */
+.profile-content {
+  margin: 1.5em auto;
+  max-width: 1200px;
+  width: 100%;
+  padding-bottom: 3rem; /* Add padding at bottom to ensure space for footer */
+}
+
+/* Make sure the footer appears at the very bottom */
+footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Rest of your existing Profile.css styles */
+.profile-header {
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2em;
+  padding: 1.5em;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+/* Back button styling */
+.compact-back-btn {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  color: #495057;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.compact-back-btn:hover {
+  background-color: #e9ecef;
+  transform: translateX(-2px);
+}
+
+.compact-back-btn svg {
+  margin-right: 5px;
+}

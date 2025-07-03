@@ -1,0 +1,52 @@
+/* True overlay sidebar and related styles */
+
+/* Main container positioning */
+.dashboard-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Main content - always full width with no margin adjustments */
+main {
+  width: 100% !important;
+  margin-left: 0 !important;
+  transition: none !important;
+}
+
+/* Content wrapper styles */
+.content-wrapper {
+  padding: 20px;
+  width: 100%;
+}
+
+/* Sidebar overlay backdrop */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Overlay sidebar styling */
+.overlay-sidebar {
+  will-change: transform;
+  pointer-events: auto;
+}
+
+/* Ensure TopNavbar stays above content but below sidebar */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+}

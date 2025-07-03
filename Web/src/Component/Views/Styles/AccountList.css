@@ -1,0 +1,819 @@
+/* Main layout structure */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f7fb;
+
+}
+
+.page-content-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+/* Clinician header styling */
+.clinician-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #000080;
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.clinician-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.clinician-title h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.clinician-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto; /* Push to the far right */
+}
+
+.count-badge {
+  font-size: 1rem !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 500 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Filter Area Styling - Added from allpatientdashboard.css */
+.filter-area {
+  background-color: #ffffff;
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Search input styling - Added from allpatientdashboard.css */
+.search-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236C757D' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  padding-left: 40px;
+  border-radius: 8px;
+  height: 42px;
+  flex: 2;
+  min-width: 300px;
+}
+
+/* Select input styling - Added from allpatientdashboard.css */
+.role-select, .status-select {
+  height: 42px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 180px;
+  font-weight: 500;
+  cursor: pointer;
+  background-position: right 0.75rem center;
+  transition: all 0.2s ease;
+}
+
+.role-select:hover,
+.status-select:hover {
+  border-color: #0d6efd;
+}
+
+.role-select:focus,
+.status-select:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  border-color: #0d6efd;
+}
+
+/* Filter action buttons - Added from allpatientdashboard.css */
+.filter-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.refresh-btn, .export-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0;
+  background-color: white;
+  border: 1px solid #dee2e6;
+}
+
+.refresh-btn:hover, .export-btn:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+}
+
+/* Status styles */
+.status-active {
+  background-color: #198754 !important;
+}
+
+.status-pending {
+  background-color: #ffc107 !important;
+}
+
+.status-inactive {
+  background-color: #dc3545 !important;
+}
+
+/* Card header styling - Matching patient management design */
+.card .bg-primary {
+  background-color: #000080 !important;
+  background-image: none !important;
+}
+
+/* Table styling */
+.custom-table .ant-table-thead > tr > th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.table-row-hover:hover > td {
+  background-color: rgba(0, 123, 255, 0.05) !important;
+}
+
+.custom-pagination {
+  margin-top: 16px;
+}
+
+/* Mobile card styling */
+.user-card {
+  transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom radio buttons */
+.custom-radio .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.custom-radio .form-check-label {
+  font-weight: 500;
+}
+
+/* Email preview area */
+.email-preview {
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #f8f9fa;
+}
+
+/* Modal Styling */
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.invite-modal .modal-header {
+  background-color: #0d6efd;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 16px 24px;
+}
+
+.save-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.required {
+  color: #dc3545;
+}
+
+/* Animation for refresh button */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+button:active .FiRefreshCw {
+  animation: spin 1s linear;
+}
+
+/* Main content styling */
+.main-content {
+  flex: 1;
+  transition: margin-left 0.3s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+}
+
+.main-content.mobile {
+  margin-left: 0;
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 20px 0;
+}
+
+/* Custom sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* User avatar styling */
+.user-avatar .rounded-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #212529;
+}
+
+/* Fix for status dropdown in table */
+.table-container {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Fix for status dropdown getting cut off */
+.status-dropdown-container {
+  position: relative;
+  z-index: 10; /* Higher z-index to ensure dropdown menu appears on top */
+}
+
+.dropdown-menu.status-dropdown-menu {
+  position: absolute;
+  z-index: 1050 !important; /* Very high z-index */
+  width: max-content;
+  transform: none !important;
+}
+
+.status-dropdown-toggle {
+  position: relative;
+  z-index: 10;
+}
+
+/* Fix for dropdown menu in ant tables */
+.ant-table-container {
+  overflow: visible !important;
+}
+
+.ant-table-body {
+  overflow: visible !important;
+}
+
+.ant-table-content {
+  overflow: visible !important;
+}
+
+/* Specific fix for when tables are sorted */
+.ant-table-thead > tr > th {
+  overflow: visible !important;
+}
+
+.status-column-cell {
+  position: relative;
+  overflow: visible !important;
+  /* Ensure other cells don't cover dropdown menu */
+  z-index: 1;
+}
+
+/* When dropdown is open, increase z-index even more */
+.dropdown.show .status-dropdown-toggle,
+.dropdown.show .status-dropdown-menu {
+  z-index: 9999 !important;
+}
+
+/* Override any overflow styles that might be causing the clipping */
+.ant-table-container,
+.ant-table-content,
+.ant-table-body,
+.ant-table-tbody,
+.ant-table-cell {
+  overflow: visible !important;
+}
+
+/* Mobile pagination */
+.mobile-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination-info {
+  text-align: center;
+}
+
+.page-numbers {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.total-info {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-input, .role-select, .status-select {
+    width: 100% !important;
+    min-width: unset !important;
+    flex: auto !important;
+  }
+  
+  /* Action buttons style for mobile */
+  .filter-actions {
+    margin-left: 0 !important;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  /* Equal width action buttons */
+  .filter-actions button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .clinician-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .clinician-count {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  
+  .form-select.role-select,
+  .form-select.status-select {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .d-flex.flex-wrap.align-items-center.gap-3 {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  
+  .d-flex.flex-wrap.align-items-center.gap-3 > div,
+  .d-flex.flex-wrap.align-items-center.gap-3 > select {
+    width: 100% !important;
+    max-width: none !important;
+    margin-bottom: 8px;
+  }
+  
+  .d-flex.flex-wrap.align-items-center.gap-3 > button {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  
+  .d-flex.flex-wrap.align-items-center.gap-3 > button:last-child {
+    margin-bottom: 0;
+  }
+}
+/* Back button styling */
+.compact-back-btn {
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-color: #ced4da;
+}
+
+.compact-back-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+/* Ensure perfect alignment in the header */
+.clinician-title h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: left;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.clinician-title p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Added this to make the padding and margin perfect */
+.clinician-header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #000080;
+  color: white;
+  border: none;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Improved table layout styling */
+.wide-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.accounts-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.accounts-table th {
+  font-weight: 600;
+  background-color: #f9fbfd !important;
+  padding: 12px 16px !important;
+  color: #495057 !important;
+  border-bottom: 2px solid #e3e8ec !important;
+}
+
+.accounts-table td {
+  padding: 12px 16px !important;
+  vertical-align: middle;
+}
+
+.table-row-even {
+  background-color: #ffffff;
+}
+
+.table-row-odd {
+  background-color: #f9fbfd;
+}
+
+.table-row-hover:hover {
+  background-color: #f0f4f8 !important;
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  min-width: 100px;
+  justify-content: center;
+  text-align: center;
+}
+
+.role-badge {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header styling */
+.account-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #00205b;
+  color: white;
+  border: none;
+}
+
+.header-title h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Stats row styling */
+.stats-row-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.stats-row {
+  display: flex;
+  width: 100%;
+  min-width: 600px;
+}
+
+.stats-item {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.stats-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: #e9ecef;
+}
+
+.stats-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.bg-primary-subtle {
+  background-color: rgba(13, 110, 253, 0.15);
+}
+
+.bg-success-subtle {
+  background-color: rgba(25, 135, 84, 0.15);
+}
+
+.bg-warning-subtle {
+  background-color: rgba(255, 193, 7, 0.15);
+}
+
+.bg-danger-subtle {
+  background-color: rgba(220, 53, 69, 0.15);
+}
+
+.bg-info-subtle {
+  background-color: rgba(13, 202, 240, 0.15);
+}
+
+.stats-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  color: #212529;
+}
+
+.stats-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Charts styling */
+.demographics-charts-container {
+  background-color: #ffffff;
+}
+
+.charts-nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.charts-nav {
+  background-color: #f8f9fa;
+  padding: 0 1rem;
+}
+
+.charts-nav-link {
+  color: #495057;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.charts-nav-link:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.charts-nav-link.active {
+  font-weight: 500;
+  color: #0d6efd;
+  border-bottom-color: #0d6efd;
+  background-color: transparent;
+}
+
+.chart-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 100%;
+  min-height: 300px;
+}
+
+.chart-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.chart-skeleton {
+  height: 250px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.chart-icon-bg {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(13, 110, 253, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-chart {
+  height: 220px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.btn-icon-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Animation for refresh icon */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .stats-item {
+    padding: 15px;
+  }
+  
+  .stats-icon-wrapper {
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
+  }
+  
+  .stats-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    flex-wrap: wrap;
+  }
+  
+  .stats-item {
+    flex: 1 0 50%;
+    min-width: 50%;
+  }
+  
+  .stats-item:nth-child(2n)::after {
+    display: none;
+  }
+  
+  .stats-item:nth-child(1), .stats-item:nth-child(2) {
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .charts-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+}
+.archive-toggle {
+  min-width: 120px;
+}
+
+.form-switch .form-check-input {
+  width: 2.5em;
+  margin-left: -2.8em;
+}
+
+.archive-switch .form-check-input:checked {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.status-archived {
+  background-color: #f8f9fa !important;
+  color: #6c757d !important;
+  border: 1px solid #dee2e6;
+}
+
+.archive-notice {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

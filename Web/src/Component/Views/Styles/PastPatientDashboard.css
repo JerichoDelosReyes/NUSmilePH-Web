@@ -1,0 +1,352 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* ======================================
+   Main layout containers
+   ====================================== */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.top-navbar {
+  height: 70px;
+  background-color: #000080;
+  color: white;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+/* ======================================
+   Page content wrapper - new structure
+   ====================================== */
+.page-content-wrapper {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  margin-top: 0 !important; /* Ensure no top margin */
+  padding-left: 0 !important; /* Remove extra padding */
+  padding-right: 0 !important; /* Remove extra padding */
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ======================================
+   Sidebar styles 
+   ====================================== */
+.sidebar {
+  height: 100vh; /* Ensure sidebar fills the full height */
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.sidebar.sidebar-collapsed {
+  width: 80px;
+}
+
+/* Overlay for mobile when sidebar is open */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ======================================
+   Main content area
+   ====================================== */
+.main-content {
+  height: 100%;
+  margin-top: 70px;
+  flex-grow: 1;
+  background-color: #f5f6fa;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Remove fixed padding to allow for content wrapper to handle centering */
+  padding: 0;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+.main-content.mobile {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* ======================================
+   Patient management container
+   ====================================== */
+.pcontainer {
+  width: 100%;
+  margin: 0 auto;
+  /* Remove padding here since content-wrapper handles it */
+  padding: 0;
+}
+
+/* Header with logo and search */
+.pheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.pheader-left {
+  display: flex;
+  align-items: center;
+}
+
+.pheader h1 {
+  font-size: 24px;
+  margin: 0 0 0 10px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* ======================================
+   Search box styling
+   ====================================== */
+.search-group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  width: 350px;
+  max-width: 100%;
+}
+
+.search-input {
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem 0 2.5rem;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+  border: 2px solid #000000;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #9e9ea7;
+}
+
+.search-input:focus, .search-input:hover {
+  outline: none;
+  border-color: #000000;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ======================================
+   Table styling
+   ====================================== */
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 20px;
+}
+
+.action-link {
+  color: rgb(31, 28, 209);
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* ======================================
+   Media queries for responsiveness
+   ====================================== */
+
+/* Extra large screens (larger desktops) */
+@media (min-width: 1601px) {
+  .content-wrapper {
+    padding: 30px;
+  }
+  
+  .pheader h1 {
+    font-size: 28px;
+  }
+  
+  .search-group {
+    width: 400px;
+  }
+}
+
+/* Large desktops and laptops */
+@media (max-width: 1600px) and (min-width: 1201px) {
+  .search-group {
+    width: 350px;
+  }
+}
+
+/* Medium desktops */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .search-group {
+    width: 300px;
+  }
+  
+  .content-wrapper {
+    padding: 20px;
+  }
+}
+
+/* Small desktops and large tablets */
+@media (max-width: 992px) and (min-width: 769px) {
+  .search-group {
+    width: 280px;
+  }
+  
+  .content-wrapper {
+    padding: 18px;
+  }
+  
+  .pheader h1 {
+    font-size: 22px;
+  }
+}
+
+/* Small tablets and phones */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 60px;
+    width: 100%;
+  }
+  
+  .content-wrapper {
+    padding: 15px;
+  }
+  
+  .pheader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .pheader-left {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .search-group {
+    width: 100%;
+  }
+  
+  .pheader h1 {
+    font-size: 20px;
+  }
+  
+  /* Ensure the actions cell stays usable on small screens */
+  .actions-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Animation for sidebar */
+  .sidebar {
+    transform: translateX(-100%); /* Hide sidebar initially on mobile */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar.visible {
+    transform: translateX(0);
+    animation: slideIn 0.3s forwards;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 10px;
+  }
+  
+  .pheader h1 {
+    font-size: 18px;
+  }
+  
+  /* Adjust table for very small screens */
+  .MuiTableCell-root {
+    padding: 6px !important;
+    font-size: 13px !important;
+  }
+  
+  .patient-avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}

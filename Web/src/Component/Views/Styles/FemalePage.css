@@ -1,0 +1,112 @@
+/* FemalePage.css */
+
+/* Main layout structure */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-body {
+    display: flex;
+    flex: 1;
+    position: relative;
+  }
+  
+  /* Top Navbar styles */
+  .top-navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+  }
+  
+  /* Sidebar styles */
+  .sidebar-wrapper {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    z-index: 1020;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  /* Main content area */
+  .main-content {
+    flex: 1;
+    margin-left: 250px;
+    transition: all 0.3s ease;
+    padding: 10px;
+  }
+  
+  /* Form styling */
+  .form-notice {
+    color: #6e6c7d;
+    font-style: italic;
+  }
+  
+  .form-label-sm {
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 992px) {
+    .sidebar-wrapper {
+      left: -250px;
+    }
+    
+    .sidebar-wrapper.open {
+      left: 0;
+    }
+    
+    .main-content {
+      margin-left: 0;
+    }
+  
+    /* Add overlay when sidebar is open on mobile */
+    .sidebar-open::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1010;
+    }
+  }
+  
+  /* Card styling enhancements */
+  .card {
+    border-radius: 0.5rem;
+    border: none;
+  }
+  
+  .card-header {
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+  }
+  
+  /* Button hover effects */
+  .btn {
+    transition: all 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Checkbox styling */
+  .form-check {
+    padding-left: 1.8rem;
+  }
+  
+  .form-check-input {
+    cursor: pointer;
+  }
+  
+  .form-check-label {
+    cursor: pointer;
+  }

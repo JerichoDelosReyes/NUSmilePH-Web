@@ -1,0 +1,499 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ======================================
+   Main layout containers
+   ====================================== */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.top-navbar {
+  height: 100px;
+  background-color: #000080;
+  color: white;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ======================================
+   Sidebar styles
+   ====================================== */
+.sidebar {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.sidebar.sidebar-collapsed {
+  width: 80px;
+}
+
+/* Overlay for mobile when sidebar is open */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ======================================
+   Main content area
+   ====================================== */
+.main-content {
+  background-color: white !important;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  width: calc(100% - 250px);
+  overflow-x: hidden;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+.main-content.mobile {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* ======================================
+   Patient management container
+   ====================================== */
+.pcontainer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.pheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.pheader-left {
+  display: flex;
+  align-items: center;
+}
+
+.pheader h1 {
+  font-size: 24px;
+  margin: 0 0 0 10px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* ======================================
+   Search box styling
+   ====================================== */
+.search-group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  width: 350px;
+  max-width: 100%;
+}
+
+.search-input {
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem 0 2.5rem;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fcfcff !important;
+  color: #0d0c22;
+  transition: .3s ease;
+  border: 2px solid #000000;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #9e9ea7;
+}
+
+.search-input:focus, .search-input:hover {
+  outline: none;
+  border-color: #000000;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  fill: #ffffff;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ======================================
+   Table styling
+   ====================================== */
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 20px;
+}
+
+.action-link {
+  color: rgb(31, 28, 209);
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* Cards styling */
+.dashboard-card {
+  height: 100%;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Stat cards styling */
+.dashboard-stat-card {
+  border-radius: 12px !important;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.2s;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Stat icon styling */
+.stat-icon {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.appointments-icon {
+  background-color: rgba(25, 118, 210, 0.1) !important;
+  color: #1976d2 !important;
+}
+
+.cases-icon {
+  background-color: rgba(46, 125, 50, 0.1) !important;
+  color: #2e7d32 !important;
+}
+
+.patients-icon {
+  background-color: rgba(237, 108, 2, 0.1) !important;
+  color: #ed6c02 !important;
+}
+
+/* Card-specific styling */
+.today-appointments {
+  border-left: 4px solid #1976d2;
+}
+
+.active-cases {
+  border-left: 4px solid #2e7d32;
+}
+
+.patients-today {
+  border-left: 4px solid #ed6c02;
+}
+
+/* Appointment and patient lists */
+.appointment-list, .patient-list {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.appointment-item, .patient-item {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  margin-bottom: 8px;
+  transition: background-color 0.2s;
+}
+
+.appointment-item:hover, .patient-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Custom scrollbar for lists */
+.appointment-list::-webkit-scrollbar,
+.patient-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.appointment-list::-webkit-scrollbar-track,
+.patient-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.appointment-list::-webkit-scrollbar-thumb,
+.patient-list::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 10px;
+}
+
+.appointment-list::-webkit-scrollbar-thumb:hover,
+.patient-list::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .dashboard-body {
+    flex-direction: column;
+  }
+    
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+    
+  .main-content {
+    height: auto;
+    padding: 16px;
+  }
+}
+/* Dashboard Styles */
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(64, 64, 221, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #4040DD;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dashboard-welcome-section {
+  margin-bottom: 24px;
+}
+
+.dashboard-card {
+  height: 100%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-weight: 600 !important;
+  color: #2D3748;
+}
+
+.add-icon {
+  color: #4040DD;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  background-color: rgba(64, 64, 221, 0.1);
+  transition: background-color 0.2s;
+}
+
+.add-icon:hover {
+  background-color: rgba(64, 64, 221, 0.2);
+}
+
+.card-items {
+  margin-bottom: 24px;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.item-label {
+  color: #718096;
+  font-weight: 500;
+}
+
+.item-value {
+  color: #2D3748;
+  font-weight: 700 !important;
+}
+
+.card-action-button {
+  background-color: #4040DD !important;
+  color: white !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  transition: background-color 0.2s, transform 0.2s !important;
+}
+
+.card-action-button:hover {
+  background-color: #3636C2 !important;
+  transform: translateY(-2px);
+}
+
+/* Stat card styles */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+  pointer-events: none;
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content-wrapper > * {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 16px;
+  }
+  
+  .card-action-button {
+    padding: 6px 12px !important;
+  }
+  
+  .item-label, .item-value {
+    font-size: 0.9rem !important;
+  }
+}
+/* Add these styles to ensure the sidebar floats above content */
+.floating-sidebar-container {
+  pointer-events: auto;
+  will-change: transform, opacity;
+}
+
+.floating-sidebar-container:hover {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+/* For desktop when sidebar is collapsed, show a small peek */
+@media (min-width: 768px) {
+  .floating-sidebar-container.collapsed {
+    transform: translateX(-170px);
+    opacity: 0.2;
+  }
+  
+  .floating-sidebar-container.collapsed:hover {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Main content should always take full width */
+.main-content {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+/* For mobile view */
+@media (max-width: 767.98px) {
+  .floating-sidebar-container {
+    transform: translateX(-100%);
+  }
+  
+  .floating-sidebar-container.visible {
+    transform: translateX(0);
+  }
+}

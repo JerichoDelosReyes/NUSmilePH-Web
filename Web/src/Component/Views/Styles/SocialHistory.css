@@ -1,0 +1,10 @@
+.sidebar-wrapper {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    z-index: 1020;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+  }
+  
