@@ -224,27 +224,28 @@ const SideBar = ({
                 gap: "12px",
               }}
             >
-              {/* Official NU Logo */}
+              {/* Official NU Logo - Bigger Size */}
               <div
                 style={{
-                  width: "32px",
-                  height: "32px",
+                  width: "40px",
+                  height: "40px",
                   background: "rgba(255, 255, 255, 0.15)",
-                  borderRadius: "12px",
+                  borderRadius: "14px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
                   overflow: "hidden",
+                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                 }}
               >
                 <img
                   src="/NU_logo.png"
                   alt="National University Logo"
                   style={{
-                    width: "24px",
-                    height: "24px",
+                    width: "32px",
+                    height: "32px",
                     objectFit: "contain",
                   }}
                 />
@@ -281,50 +282,49 @@ const SideBar = ({
               </div>
             </div>
 
-            {/* Enhanced Close Button with Better Visibility */}
+            {/* Subtle Close Button - Better Integrated */}
             <button
               onClick={closeSidebar}
               style={{
-                background: "rgba(255,255,255,0.25)",
-                border: "2px solid rgba(255,255,255,0.4)",
-                fontSize: "14px",
+                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                fontSize: "12px",
                 cursor: "pointer",
-                width: "36px",
-                height: "36px",
+                width: "28px",
+                height: "28px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "12px",
-                color: "#ffffff",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                borderRadius: "8px",
+                color: "rgba(255,255,255,0.8)",
+                transition: "all 0.2s ease",
+                backdropFilter: "blur(5px)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.35)";
-                e.currentTarget.style.transform = "scale(1.1) rotate(90deg)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
-                e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.2)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+                e.currentTarget.style.transform = "scale(1.05)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.25)";
-                e.currentTarget.style.transform = "scale(1) rotate(0deg)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
-                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.color = "rgba(255,255,255,0.8)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
-              {/* Boxicons close icon - reliable and clean */}
-              <i 
-                className="bx bx-x" 
+              {/* Simple and clean close icon */}
+              <span 
                 style={{
-                  fontSize: "24px",
+                  fontSize: "16px",
+                  fontWeight: "300",
                   lineHeight: "1",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  fontFamily: "Arial, sans-serif",
                 }}
-              ></i>
+              >
+                ×
+              </span>
             </button>
           </div>
         </div>
