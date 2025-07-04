@@ -224,31 +224,33 @@ const SideBar = ({
                 gap: "12px",
               }}
             >
-              {/* Tooth Icon - Pure White Background */}
+              {/* Modern logo with better styling */}
               <div
                 style={{
-                  width: "48px",
-                  height: "48px",
-                  background: "#ffffff",
-                  borderRadius: "16px",
+                  width: "32px",
+                  height: "32px",
+                  background: "rgba(255, 255, 255, 0.15)",
+                  borderRadius: "12px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  border: "2px solid #ffffff",
-                  overflow: "hidden",
-                  boxShadow: "0 6px 16px rgba(0, 0, 0, 0.15)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                 }}
               >
-                <img
-                  src="/tooth.png"
-                  alt="Dental Tooth Icon"
-                  style={{
-                    width: "36px",
-                    height: "36px",
-                    objectFit: "contain",
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
-                  }}
-                />
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C17.523 2 22 6.477 22 12s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12 6 6 0 010-12z"
+                    fill="white"
+                  />
+                  <circle cx="12" cy="12" r="3" fill="white" opacity="0.8" />
+                </svg>
               </div>
               
               <div style={{ flex: 1 }}>
@@ -282,52 +284,39 @@ const SideBar = ({
               </div>
             </div>
 
-            {/* Enhanced Close Button - Prominent and Red on Hover */}
+            {/* Modern close button */}
             <button
               onClick={closeSidebar}
               style={{
-                background: "rgba(255,255,255,0.2)",
-                border: "2px solid rgba(255,255,255,0.3)",
-                fontSize: "18px",
+                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                fontSize: "14px",
                 cursor: "pointer",
-                width: "36px",
-                height: "36px",
+                width: "32px",
+                height: "32px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "10px",
-                color: "rgba(255,255,255,0.9)",
+                color: "#ffffff",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 backdropFilter: "blur(10px)",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(239, 68, 68, 0.9)";
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "rgba(220, 38, 38, 0.8)";
-                e.currentTarget.style.transform = "scale(1.1)";
-                e.currentTarget.style.boxShadow = "0 4px 15px rgba(220, 38, 38, 0.4)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
-                e.currentTarget.style.color = "rgba(255,255,255,0.9)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
                 e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
               }}
             >
-              {/* Clean and prominent close icon */}
-              <span 
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "400",
-                  lineHeight: "1",
-                  fontFamily: "Arial, sans-serif",
-                }}
-              >
-                ×
-              </span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
             </button>
           </div>
         </div>
