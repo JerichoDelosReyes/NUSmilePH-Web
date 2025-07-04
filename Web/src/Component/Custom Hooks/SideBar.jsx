@@ -224,29 +224,30 @@ const SideBar = ({
                 gap: "12px",
               }}
             >
-              {/* Official NU Logo - Bigger Size */}
+              {/* Tooth Icon - Bigger with White Background */}
               <div
                 style={{
-                  width: "40px",
-                  height: "40px",
-                  background: "rgba(255, 255, 255, 0.15)",
-                  borderRadius: "14px",
+                  width: "48px",
+                  height: "48px",
+                  background: "#ffffff",
+                  borderRadius: "16px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  border: "2px solid rgba(255, 255, 255, 0.5)",
                   overflow: "hidden",
-                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                  boxShadow: "0 6px 16px rgba(0, 0, 0, 0.15)",
                 }}
               >
                 <img
-                  src="/NU_logo.png"
-                  alt="National University Logo"
+                  src="/tooth.png"
+                  alt="Dental Tooth Icon"
                   style={{
-                    width: "32px",
-                    height: "32px",
+                    width: "36px",
+                    height: "36px",
                     objectFit: "contain",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
                   }}
                 />
               </div>
@@ -282,7 +283,7 @@ const SideBar = ({
               </div>
             </div>
 
-            {/* Subtle Close Button - Better Integrated */}
+            {/* Subtle Close Button - Red on Hover */}
             <button
               onClick={closeSidebar}
               style={{
@@ -297,21 +298,23 @@ const SideBar = ({
                 justifyContent: "center",
                 borderRadius: "8px",
                 color: "rgba(255,255,255,0.8)",
-                transition: "all 0.2s ease",
+                transition: "all 0.3s ease",
                 backdropFilter: "blur(5px)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.background = "rgba(239, 68, 68, 0.9)";
                 e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+                e.currentTarget.style.borderColor = "rgba(220, 38, 38, 0.8)";
                 e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(220, 38, 38, 0.3)";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.background = "rgba(255,255,255,0.1)";
                 e.currentTarget.style.color = "rgba(255,255,255,0.8)";
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
                 e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               {/* Simple and clean close icon */}
