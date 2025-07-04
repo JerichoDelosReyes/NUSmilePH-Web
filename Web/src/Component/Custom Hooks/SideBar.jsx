@@ -224,7 +224,7 @@ const SideBar = ({
                 gap: "12px",
               }}
             >
-              {/* Tooth Icon - Bigger with White Background */}
+              {/* Tooth Icon - Pure White Background */}
               <div
                 style={{
                   width: "48px",
@@ -234,8 +234,7 @@ const SideBar = ({
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  backdropFilter: "blur(10px)",
-                  border: "2px solid rgba(255, 255, 255, 0.5)",
+                  border: "2px solid #ffffff",
                   overflow: "hidden",
                   boxShadow: "0 6px 16px rgba(0, 0, 0, 0.15)",
                 }}
