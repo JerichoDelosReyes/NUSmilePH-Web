@@ -224,7 +224,7 @@ const SideBar = ({
                 gap: "12px",
               }}
             >
-              {/* Modern logo with better styling */}
+              {/* Official NU Logo */}
               <div
                 style={{
                   width: "32px",
@@ -236,21 +236,18 @@ const SideBar = ({
                   justifyContent: "center",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
+                  overflow: "hidden",
                 }}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2C17.523 2 22 6.477 22 12s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12 6 6 0 010-12z"
-                    fill="white"
-                  />
-                  <circle cx="12" cy="12" r="3" fill="white" opacity="0.8" />
-                </svg>
+                <img
+                  src="/NU_logo.png"
+                  alt="National University Logo"
+                  style={{
+                    width: "24px",
+                    height: "24px",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
               
               <div style={{ flex: 1 }}>
