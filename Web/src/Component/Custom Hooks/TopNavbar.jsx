@@ -64,21 +64,13 @@ const TopNavbar = ({ toggleSidebar }) => {
     cursor: 'pointer',
     height: '100%',
     padding: '0',
-    borderRadius: '8px',
-    transition: 'all 0.2s ease',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1)'
-    }
+    borderRadius: '8px'
   };
 
   const logoStyle = {
     height: windowWidth <= 400 ? '32px' : '40px',
     width: 'auto',
-    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
-    transition: 'transform 0.2s ease',
-    '&:hover': {
-      transform: 'scale(1.05)'
-    }
+    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
   };
 
   // Modern title text styling with better typography
@@ -111,20 +103,12 @@ const TopNavbar = ({ toggleSidebar }) => {
     alignItems: 'center',
     justifyContent: 'center',
     padding: '0',
-    margin: '0 10px 0 0',
+    margin: '0',
     borderRadius: '8px',
-    transition: 'all 0.2s ease',
     height: '40px',
     width: '40px',
     position: 'relative',
-    top: '0',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      transform: 'scale(1.05)'
-    },
-    '&:active': {
-      transform: 'scale(0.95)'
-    }
+    top: '0'
   };
 
   const userInfoStyle = {
@@ -206,21 +190,33 @@ const TopNavbar = ({ toggleSidebar }) => {
   return (
     <div style={navbarStyle}>
       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-        <button 
-          onClick={handleToggleSidebar}
-          style={hamburgerStyle}
-          aria-label="Toggle Sidebar"
+        <div 
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '4px',
+            marginRight: '10px',
+            borderRadius: '8px',
+            transition: 'all 0.2s ease',
+            cursor: 'pointer',
+            backgroundColor: 'transparent'
+          }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.target.style.transform = 'scale(1.05)';
+            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'transparent';
-            e.target.style.transform = 'scale(1)';
+            e.currentTarget.style.backgroundColor = 'transparent';
           }}
         >
-          <Menu size={24} />
-        </button>
+          <button 
+            onClick={handleToggleSidebar}
+            style={{...hamburgerStyle, cursor: 'pointer'}}
+            aria-label="Toggle Sidebar"
+          >
+            <Menu size={24} />
+          </button>
+        </div>
         
         <div 
           style={logoContainerStyle}
@@ -231,12 +227,6 @@ const TopNavbar = ({ toggleSidebar }) => {
             src="/NU_logo.png"
             alt="NU Logo"
             style={logoStyle}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'scale(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'scale(1)';
-            }}
           />
           <h1 style={titleStyle} title={pageTitle || 'NuSmilePH'}>
             {truncateTitle(pageTitle)}
