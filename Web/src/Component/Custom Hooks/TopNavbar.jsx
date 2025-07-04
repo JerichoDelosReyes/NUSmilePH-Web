@@ -63,7 +63,7 @@ const TopNavbar = ({ toggleSidebar }) => {
     gap: '12px',
     cursor: 'pointer',
     height: '100%',
-    padding: '8px 0',
+    padding: '0',
     borderRadius: '8px',
     transition: 'all 0.2s ease',
     '&:hover': {
@@ -110,12 +110,14 @@ const TopNavbar = ({ toggleSidebar }) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '12px',
-    marginRight: '10px',
+    padding: '0',
+    margin: '0 10px 0 0',
     borderRadius: '8px',
     transition: 'all 0.2s ease',
-    height: '48px',
-    minHeight: '48px',
+    height: '40px',
+    width: '40px',
+    position: 'relative',
+    top: '0',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       transform: 'scale(1.05)'
@@ -203,7 +205,7 @@ const TopNavbar = ({ toggleSidebar }) => {
 
   return (
     <div style={navbarStyle}>
-      <div style={logoContainerStyle}>
+      <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
         <button 
           onClick={handleToggleSidebar}
           style={hamburgerStyle}
