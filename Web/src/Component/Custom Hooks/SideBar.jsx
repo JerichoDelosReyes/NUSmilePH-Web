@@ -288,33 +288,36 @@ const SideBar = ({
             <button
               onClick={closeSidebar}
               style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                fontSize: "14px",
+                background: "rgba(255,255,255,0.3)",
+                border: "2px solid rgba(255,255,255,0.5)",
+                fontSize: "18px",
                 cursor: "pointer",
-                width: "32px",
-                height: "32px",
+                width: "40px",
+                height: "40px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "10px",
+                borderRadius: "12px",
                 color: "#ffffff",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 backdropFilter: "blur(10px)",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
-                e.currentTarget.style.transform = "scale(1.05)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.4)";
+                e.currentTarget.style.transform = "scale(1.1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)";
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.3)";
                 e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
               </svg>
             </button>

@@ -19,11 +19,12 @@
   
   .main-content {
     flex: 1;
-    padding: 5px 10px;
+    padding: 0 !important;
     background-color: #f5f5f5;
     overflow-y: auto;
     width: 100%;
     max-width: 100%;
+    margin: 0 !important;
   }
   
   /* Form Styling */
@@ -32,14 +33,27 @@
   .MuiBox-root {
     width: 100% !important;
     max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .MuiBox-root.css-1pq75k7 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .container,
   .container-fluid {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
   }
 
   .checkbox-options {
@@ -134,6 +148,101 @@
     padding: 20px;
   }
   
+  /* Card width maximization */
+  .card,
+  .MuiCard-root,
+  .MuiPaper-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 5px 0 !important;
+  }
+
+  /* Row and column maximization */
+  .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .col,
+  .col-12,
+  .col-md-12,
+  .col-lg-12,
+  .col-xl-12 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Remove any default margins from body elements */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure root container uses full width */
+  #root {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Aggressive dead space removal */
+  * {
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .App {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Material-UI specific overrides */
+  .MuiContainer-root,
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthMd,
+  .MuiContainer-maxWidthSm,
+  .MuiContainer-maxWidthXl,
+  .MuiContainer-maxWidthXs {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  .MuiGrid-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .MuiGrid-item {
+    padding: 0 !important;
+  }
+
+  /* Remove any default spacing */
+  .dashboard-container,
+  .dashboard-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .checkbox-options {
