@@ -281,39 +281,50 @@ const SideBar = ({
               </div>
             </div>
 
-            {/* Modern close button */}
+            {/* Enhanced Close Button with Better Visibility */}
             <button
               onClick={closeSidebar}
               style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
+                background: "rgba(255,255,255,0.25)",
+                border: "2px solid rgba(255,255,255,0.4)",
                 fontSize: "14px",
                 cursor: "pointer",
-                width: "32px",
-                height: "32px",
+                width: "36px",
+                height: "36px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "10px",
+                borderRadius: "12px",
                 color: "#ffffff",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 backdropFilter: "blur(10px)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
-                e.currentTarget.style.transform = "scale(1.05)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.35)";
+                e.currentTarget.style.transform = "scale(1.1) rotate(90deg)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
+                e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.2)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.25)";
+                e.currentTarget.style.transform = "scale(1) rotate(0deg)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-              </svg>
+              {/* Boxicons close icon - reliable and clean */}
+              <i 
+                className="bx bx-x" 
+                style={{
+                  fontSize: "24px",
+                  lineHeight: "1",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              ></i>
             </button>
           </div>
         </div>
