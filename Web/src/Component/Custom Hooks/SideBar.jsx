@@ -173,7 +173,7 @@ const SideBar = ({
     pointerEvents: "auto",
     display: "flex",
     flexDirection: "column",
-    overflowY: "auto",
+    overflow: "hidden", // Changed from overflowY: "auto" to prevent header scrolling
     borderRight: "1px solid rgba(0, 0, 128, 0.1)",
   };
 
@@ -330,6 +330,37 @@ const SideBar = ({
             </button>
           </div>
         </div>
+        {/* Scrollable content area below the fixed header */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            overflowY: "auto",
+            overflowX: "hidden",
+            // Custom scrollbar styling for webkit browsers
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(0, 0, 128, 0.3) transparent",
+          }}
+        >
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              .overlay-sidebar .sidebar-scroll-content::-webkit-scrollbar {
+                width: 6px;
+              }
+              .overlay-sidebar .sidebar-scroll-content::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              .overlay-sidebar .sidebar-scroll-content::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 128, 0.2);
+                border-radius: 3px;
+              }
+              .overlay-sidebar .sidebar-scroll-content::-webkit-scrollbar-thumb:hover {
+                background: rgba(0, 0, 128, 0.4);
+              }
+            `
+          }} />
+
         <Sidebar
           backgroundColor="transparent"
           collapsed={false}
@@ -688,6 +719,7 @@ const SideBar = ({
             </Menu>
           </div>
         </Sidebar>
+        </div>
       </div>
     </>
   );
