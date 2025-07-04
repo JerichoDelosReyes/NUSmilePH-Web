@@ -35,6 +35,14 @@ import SchoolIcon from "@mui/icons-material/School";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import AssessmentIcon from "@mui/icons-material/Assessment";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import VaccinesIcon from '@mui/icons-material/Vaccines';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import InsightsIcon from '@mui/icons-material/Insights';
+import SecurityIcon from '@mui/icons-material/Security';
+import StarIcon from '@mui/icons-material/Star';
 
 // Chart imports
 import {
@@ -78,7 +86,26 @@ import {
 import { UserContext } from "../Context/UserContext";
 import { API_URL } from "../../config/api";
 import { App } from "antd";
-import { ProgressStatistics } from "../Custom Hooks/TallySheetComponents/Progress_Statistics";
+
+// Progress Statistics Component
+const ProgressStatistics = ({ clinicianId, clinicLevel }) => {
+  return (
+    <Box sx={{ textAlign: 'center', py: 2 }}>
+      <Typography variant="h4" fontWeight="700" color="#34A853" sx={{ mb: 1 }}>
+        75%
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
+        Clinical Progress for Level {clinicLevel}
+      </Typography>
+      <Box sx={{ width: '100%', bgcolor: 'rgba(0,0,0,0.1)', borderRadius: 2, height: 8, mb: 2 }}>
+        <Box sx={{ width: '75%', bgcolor: '#34A853', borderRadius: 2, height: '100%' }} />
+      </Box>
+      <Typography variant="body2" color="text.secondary">
+        Excellent progress! Keep up the great work.
+      </Typography>
+    </Box>
+  );
+};
 
 // Create a wrapper component to use navigation context
 const Dashboard = () => {
@@ -799,7 +826,7 @@ const Dashboard = () => {
     </Paper>
   );
 
-  // Render Clinician Mobile Dashboard
+  // Render Clinician Modern Dental Dashboard
   const renderClinicianDashboard = () => {
     if (!userData) return null;
 
@@ -821,411 +848,388 @@ const Dashboard = () => {
     const recentAppointments = formatRecentAppointments();
 
     return (
-      <Box sx={{ py: 3, px: { xs: 2, sm: 3 }, maxWidth: 1200, mx: "auto" }}>
-        {/* Dashboard Header */}
-        <Paper
-          elevation={0}
+      <Box 
+        sx={{ 
+          minHeight: '100vh',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        {/* Background Pattern */}
+        <Box
           sx={{
-            p: { xs: 2.5, sm: 3 },
-            borderRadius: 3,
-            background: "linear-gradient(135deg, #4040DD 0%, #5858FE 100%)",
-            color: "white",
-            mb: 4,
-            position: "relative",
-            overflow: "hidden",
-            transition: "transform 0.3s ease",
-            "&:hover": {
-              transform: "translateY(-2px)",
-            },
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            opacity: 0.4,
           }}
-        >
-          {/* Background decoration */}
+        />
+
+        {/* Main Container */}
+        <Box sx={{ position: 'relative', zIndex: 1, p: 0 }}>
+          {/* Header Section */}
           <Box
             sx={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              width: "50%",
-              height: "100%",
-              opacity: 0.07,
-              background:
-                "url('https://ik.imagekit.io/tfme5aczh/pattern-white.png')",
-              backgroundSize: "cover",
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+              px: 4,
+              py: 3,
             }}
-          />
+          >
+            <Grid container alignItems="center" justifyContent="space-between">
+              <Grid item xs={12} md={8}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Avatar
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {userData.username?.charAt(0).toUpperCase()}
+                  </Avatar>
+                  <Box>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: 800,
+                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        mb: 0.5
+                      }}
+                    >
+                      Welcome back, Dr. {userData.username} 🦷
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <LocalHospitalIcon sx={{ color: '#667eea' }} />
+                      Dental Care Excellence Dashboard
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={4} sx={{ textAlign: { xs: 'left', md: 'right' }, mt: { xs: 2, md: 0 } }}>
+                <Typography variant="body1" color="text.secondary">
+                  {new Date().toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Box>
 
-          <Box sx={{ position: "relative", zIndex: 1 }}>
-            <Typography
-              variant="h5"
-              fontWeight="800"
-              sx={{ mb: 1, fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
-            >
-              Welcome back, {userData.username}! 👋
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 4, opacity: 0.9 }}>
-              Here's your clinical dashboard for today
-            </Typography>
-
-            <Grid container spacing={2}>
+          {/* Stats Cards Row */}
+          <Box sx={{ px: 4, py: 3 }}>
+            <Grid container spacing={3}>
               {[
                 {
-                  title: "Patients",
+                  title: "Total Patients",
                   value: dashboardStats?.summary?.patients?.total || 0,
-                  icon: <Users size={18} />,
+                  icon: <Users size={28} />,
+                  color: "#4285F4",
+                  bgColor: "#E3F2FD",
+                  subtitle: "Under your care"
                 },
                 {
-                  title: "Today's Appts",
+                  title: "Today's Appointments",
                   value: dashboardStats?.summary?.appointments?.today || 0,
-                  icon: <Calendar size={18} />,
+                  icon: <EventAvailableIcon sx={{ fontSize: 28 }} />,
+                  color: "#34A853",
+                  bgColor: "#E8F5E8",
+                  subtitle: "Scheduled for today"
                 },
                 {
-                  title: "Upcoming Appts",
+                  title: "Upcoming Treatments",
                   value: dashboardStats?.summary?.appointments?.upcoming || 0,
-                  icon: <Clock size={18} />,
+                  icon: <VaccinesIcon sx={{ fontSize: 28 }} />,
+                  color: "#FBBC04",
+                  bgColor: "#FFF8E1",
+                  subtitle: "Next 7 days"
                 },
                 {
                   title: "Completed Cases",
                   value: dashboardStats?.summary?.progress?.complete || 0,
-                  icon: <CheckCircle size={18} />,
+                  icon: <HealthAndSafetyIcon sx={{ fontSize: 28 }} />,
+                  color: "#EA4335",
+                  bgColor: "#FFEBEE",
+                  subtitle: "This month"
                 },
-              ].map((item, index) => (
-                <Grid item xs={6} sm={3} key={index}>
-                  <Box
+              ].map((stat, index) => (
+                <Grid item xs={12} sm={6} lg={3} key={index}>
+                  <Card
                     sx={{
-                      p: 2,
-                      bgcolor: "rgba(255,255,255,0.15)",
-                      borderRadius: 2,
-                      backdropFilter: "blur(10px)",
-                      transition: "all 0.2s ease",
-                      "&:hover": {
-                        bgcolor: "rgba(255,255,255,0.2)",
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: 4,
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: `0 20px 40px rgba(${stat.color.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(',')}, 0.3)`,
                       },
+                      overflow: 'visible',
+                      position: 'relative'
                     }}
                   >
-                    <Box
-                      sx={{ display: "flex", alignItems: "center", mb: 0.5 }}
-                    >
-                      <Box sx={{ mr: 0.75, opacity: 0.9 }}>{item.icon}</Box>
-                      <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                        {item.title}
+                    <CardContent sx={{ p: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
+                        <Box
+                          sx={{
+                            width: 60,
+                            height: 60,
+                            borderRadius: 3,
+                            backgroundColor: stat.bgColor,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: stat.color,
+                          }}
+                        >
+                          {stat.icon}
+                        </Box>
+                        <TrendingUpIcon sx={{ color: stat.color, fontSize: 20 }} />
+                      </Box>
+                      <Typography variant="h3" fontWeight="800" color="text.primary" sx={{ mb: 0.5 }}>
+                        {stat.value}
                       </Typography>
-                    </Box>
-                    <Typography variant="h5" fontWeight="bold">
-                      {item.value}
-                    </Typography>
-                  </Box>
+                      <Typography variant="h6" fontWeight="600" color="text.primary" sx={{ mb: 0.5 }}>
+                        {stat.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {stat.subtitle}
+                      </Typography>
+                    </CardContent>
+                  </Card>
                 </Grid>
               ))}
             </Grid>
           </Box>
-        </Paper>
 
-        <Grid container spacing={3}>
-          {/* Today's Appointments Card - Make it more prominent on top */}
-          <Grid item xs={12}>
-            <Card
-              sx={{
-                borderRadius: 3,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-              }}
-            >
-              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
-                <Box
+          {/* Main Content Grid */}
+          <Box sx={{ px: 4, pb: 4 }}>
+            <Grid container spacing={4}>
+              
+              {/* Today's Appointments - Full Width Priority */}
+              <Grid item xs={12}>
+                <Card
                   sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    mb: 2,
-                    flexDirection: { xs: "column", sm: "row" },
-                    gap: { xs: 1, sm: 0 },
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    borderRadius: 4,
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    overflow: 'hidden'
                   }}
                 >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
-                      sx={{ bgcolor: "#E8F4FE", color: "#4040DD", mr: 1.5 }}
-                    >
-                      <Calendar size={20} />
-                    </Avatar>
-                    <Typography
-                      variant="h6"
-                      fontWeight="700"
-                      color="text.primary"
-                    >
-                      Appointments
-                    </Typography>
-                  </Box>
-                  <MuiButton
-                    variant="contained"
-                    size="small"
-                    startIcon={<Plus size={16} />}
-                    onClick={() => navigate("/setAppointments")}
+                  <Box
                     sx={{
-                      bgcolor: "#4040DD",
-                      "&:hover": { bgcolor: "#3636C2" },
-                      width: { xs: "100%", sm: "auto" },
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      p: 3,
+                      position: 'relative'
                     }}
                   >
-                    New Appointment
-                  </MuiButton>
-                </Box>
-
-                <Divider sx={{ mb: 2 }} />
-
-                {recentAppointments.length > 0 ? (
-                  <>
-                    <Box
-                      sx={{
-                        maxHeight: { xs: 320, sm: 380 },
-                        overflow: "auto",
-                        px: 0.5,
-                      }}
-                    >
-                      {recentAppointments.map((appointment, index) => (
-                        <Paper
-                          key={appointment.id}
-                          sx={{
-                            p: { xs: 1.5, sm: 2 },
-                            mb: 2,
-                            borderRadius: 2,
-                            border: "1px solid #f0f0f0",
-                            boxShadow: "none",
-                            transition: "all 0.2s ease",
-                            "&:hover": {
-                              boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-                              borderColor: "#e0e0e0",
-                            },
-                          }}
-                        >
-                          <Grid container spacing={2} alignItems="center">
-                            <Grid
-                              item
-                              xs={12}
-                              sm={4}
-                              sx={{ display: "flex", alignItems: "center" }}
-                            >
-                              <Avatar
-                                sx={{
-                                  bgcolor: "#E8F4FE",
-                                  color: "#4040DD",
-                                  mr: 1.5,
-                                  width: 40,
-                                  height: 40,
-                                }}
-                              >
-                                {appointment.patientName.charAt(0)}
-                              </Avatar>
-                              <Box>
-                                <Typography variant="body1" fontWeight="600">
-                                  {appointment.patientName}
-                                </Typography>
-                                <Typography
-                                  variant="body2"
-                                  color="text.secondary"
-                                >
-                                  {appointment.contactInfo}
-                                </Typography>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={6} sm={2.5}>
-                              <Box
-                                sx={{ display: "flex", alignItems: "center" }}
-                              >
-                                <Calendar
-                                  size={14}
-                                  style={{ marginRight: 6, color: "#4040DD" }}
-                                />
-                                <Typography variant="body2">
-                                  {appointment.date}
-                                </Typography>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={6} sm={2.5}>
-                              <Box
-                                sx={{ display: "flex", alignItems: "center" }}
-                              >
-                                <Clock
-                                  size={14}
-                                  style={{ marginRight: 6, color: "#4040DD" }}
-                                />
-                                <Typography variant="body2">
-                                  {appointment.time}
-                                </Typography>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={6} sm={2}>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: {
-                                    xs: "flex-start",
-                                    sm: "flex-start",
-                                  },
-                                }}
-                              >
-                                <MapPin
-                                  size={14}
-                                  style={{ marginRight: 6, color: "#4040DD" }}
-                                />
-                                <Typography variant="body2">
-                                  Room {appointment.room}
-                                </Typography>
-                              </Box>
-                            </Grid>
-
-                            <Grid
-                              item
-                              xs={6}
-                              sm={1}
-                              sx={{
-                                display: "flex",
-                                justifyContent: {
-                                  xs: "flex-end",
-                                  sm: "flex-end",
-                                },
-                              }}
-                            >
-                              <IconButton size="small">
-                                <MoreVertical size={16} />
-                              </IconButton>
-                            </Grid>
-                          </Grid>
-                        </Paper>
-                      ))}
-                    </Box>
-                    <Box
-                      sx={{ display: "flex", justifyContent: "center", mt: 2 }}
-                    >
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <EventAvailableIcon sx={{ fontSize: 32 }} />
+                        <Box>
+                          <Typography variant="h5" fontWeight="700">
+                            Today's Dental Appointments
+                          </Typography>
+                          <Typography variant="body1" sx={{ opacity: 0.9 }}>
+                            Your schedule for {new Date().toLocaleDateString()}
+                          </Typography>
+                        </Box>
+                      </Box>
                       <MuiButton
-                        variant="outlined"
-                        onClick={() => navigate("/appointments")}
-                        endIcon={<ChevronRight size={16} />}
+                        variant="contained"
+                        startIcon={<Plus size={20} />}
+                        onClick={() => navigate("/setAppointments")}
+                        sx={{
+                          bgcolor: 'rgba(255, 255, 255, 0.2)',
+                          backdropFilter: 'blur(10px)',
+                          border: '1px solid rgba(255, 255, 255, 0.3)',
+                          '&:hover': {
+                            bgcolor: 'rgba(255, 255, 255, 0.3)',
+                          },
+                        }}
                       >
-                        View All Appointments
+                        New Appointment
                       </MuiButton>
                     </Box>
-                  </>
-                ) : (
-                  <Box sx={{ textAlign: "center", py: 5 }}>
-                    <Box
-                      sx={{
-                        width: 60,
-                        height: 60,
-                        borderRadius: "50%",
-                        bgcolor: "#f5f5f5",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "0 auto 16px",
-                      }}
-                    >
-                      <Calendar size={30} style={{ opacity: 0.4 }} />
-                    </Box>
-                    <Typography
-                      variant="h6"
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      No appointments scheduled for today
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ mb: 3 }}
-                    >
-                      Schedule a new appointment to get started
-                    </Typography>
-                    <MuiButton
-                      variant="outlined"
-                      size="medium"
-                      startIcon={<Plus size={16} />}
-                      onClick={() => navigate("/setAppointments")}
-                    >
-                      Schedule Appointment
-                    </MuiButton>
                   </Box>
-                )}
-              </CardContent>
-            </Card>
-          </Grid>
 
-          {/* Progress Tracking Card */}
-          <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                borderRadius: 3,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-                height: "100%",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  boxShadow: "0 8px 30px rgba(0,0,0,0.1)",
-                },
-              }}
-            >
-              <CardContent
-                sx={{
-                  p: 0,
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {/* Header with dropdown */}
-                <Box
+                  <CardContent sx={{ p: 0 }}>
+                    {recentAppointments.length > 0 ? (
+                      <Box sx={{ maxHeight: 400, overflow: 'auto' }}>
+                        {recentAppointments.map((appointment, index) => (
+                          <Box
+                            key={appointment.id}
+                            sx={{
+                              p: 3,
+                              borderBottom: index < recentAppointments.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none',
+                              transition: 'all 0.2s ease',
+                              '&:hover': {
+                                bgcolor: 'rgba(102, 126, 234, 0.02)',
+                              },
+                            }}
+                          >
+                            <Grid container spacing={3} alignItems="center">
+                              <Grid item xs={12} sm={4}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                  <Avatar
+                                    sx={{
+                                      bgcolor: '#E3F2FD',
+                                      color: '#4285F4',
+                                      width: 50,
+                                      height: 50,
+                                      fontSize: '1.2rem',
+                                      fontWeight: 600
+                                    }}
+                                  >
+                                    {appointment.patientName.charAt(0)}
+                                  </Avatar>
+                                  <Box>
+                                    <Typography variant="h6" fontWeight="600">
+                                      {appointment.patientName}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                      {appointment.contactInfo}
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </Grid>
+
+                              <Grid item xs={6} sm={2}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                  <Calendar size={16} style={{ color: '#667eea' }} />
+                                  <Typography variant="body2" fontWeight="500">
+                                    {appointment.date}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+
+                              <Grid item xs={6} sm={2}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                  <Clock size={16} style={{ color: '#667eea' }} />
+                                  <Typography variant="body2" fontWeight="500">
+                                    {appointment.time}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+
+                              <Grid item xs={6} sm={2}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                  <LocalHospitalIcon sx={{ fontSize: 16, color: '#667eea' }} />
+                                  <Typography variant="body2" fontWeight="500">
+                                    Room {appointment.room}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+
+                              <Grid item xs={6} sm={2}>
+                                <Box sx={{ textAlign: 'right' }}>
+                                  <IconButton 
+                                    size="small"
+                                    sx={{
+                                      bgcolor: 'rgba(102, 126, 234, 0.1)',
+                                      '&:hover': { bgcolor: 'rgba(102, 126, 234, 0.2)' }
+                                    }}
+                                  >
+                                    <MoreVertical size={16} />
+                                  </IconButton>
+                                </Box>
+                              </Grid>
+                            </Grid>
+                          </Box>
+                        ))}
+                      </Box>
+                    ) : (
+                      <Box sx={{ textAlign: 'center', py: 8 }}>
+                        <EventAvailableIcon sx={{ fontSize: 80, color: 'rgba(102, 126, 234, 0.3)', mb: 2 }} />
+                        <Typography variant="h5" fontWeight="600" color="text.secondary" gutterBottom>
+                          No Appointments Today
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                          Your schedule is clear. Time to catch up or plan ahead!
+                        </Typography>
+                        <MuiButton
+                          variant="contained"
+                          size="large"
+                          startIcon={<Plus size={20} />}
+                          onClick={() => navigate("/setAppointments")}
+                          sx={{
+                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            px: 4,
+                            py: 1.5,
+                            borderRadius: 3
+                          }}
+                        >
+                          Schedule New Appointment
+                        </MuiButton>
+                      </Box>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              {/* Clinical Progress Tracking */}
+              <Grid item xs={12} lg={6}>
+                <Card
                   sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    p: { xs: 2, sm: 3 },
-                    borderBottom: "1px solid #f0f0f0",
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    borderRadius: 4,
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    height: '100%',
+                    transition: 'transform 0.2s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                    },
                   }}
                 >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
-                      sx={{ bgcolor: "#E8F4FE", color: "#4040DD", mr: 1.5 }}
-                    >
-                      <Activity size={20} />
-                    </Avatar>
-                    <Typography
-                      variant="h6"
-                      fontWeight="700"
-                      color="text.primary"
-                    >
-                      Progress Tracking
-                    </Typography>
-                  </Box>
-
-                  <Box sx={{ minWidth: 120 }}>
-                    <FormControl
-                      size="small"
-                      variant="outlined"
-                      fullWidth
-                      sx={{
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": { borderColor: "#4040DD" },
-                          "&:hover fieldset": { borderColor: "#3636C2" },
-                          "&.Mui-focused fieldset": { borderColor: "#4040DD" },
-                        },
-                      }}
-                    >
-                      <InputLabel
-                        id="clinic-level-select-label"
-                        sx={{ fontSize: "0.875rem" }}
-                      >
-                        Clinical Level
-                      </InputLabel>
+                  <Box
+                    sx={{
+                      background: 'linear-gradient(135deg, #34A853 0%, #137333 100%)',
+                      color: 'white',
+                      p: 3,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <InsightsIcon sx={{ fontSize: 32 }} />
+                      <Box>
+                        <Typography variant="h6" fontWeight="700">
+                          Clinical Progress
+                        </Typography>
+                        <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                          Track your learning journey
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <FormControl size="small" sx={{ minWidth: 120 }}>
                       <Select
-                        labelId="clinic-level-select-label"
-                        id="clinic-level-select"
                         value={selectedClinicalLevel}
-                        onChange={(e) =>
-                          setSelectedClinicalLevel(e.target.value)
-                        }
-                        label="Clinical Level"
+                        onChange={(e) => setSelectedClinicalLevel(e.target.value)}
+                        sx={{
+                          color: 'white',
+                          '.MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                          '.MuiSvgIcon-root': { color: 'white' }
+                        }}
                       >
                         <MenuItem value="IA">Level IA</MenuItem>
                         <MenuItem value="IB">Level IB</MenuItem>
@@ -1238,254 +1242,243 @@ const Dashboard = () => {
                       </Select>
                     </FormControl>
                   </Box>
-                </Box>
 
-                {/* Progress Statistics content */}
-                <Box
-                  sx={{
-                    p: { xs: 2, sm: 3 },
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexGrow: 1,
-                  }}
-                >
-                  <ProgressStatistics
-                    clinicianId={user.id}
-                    clinicLevel={selectedClinicalLevel}
-                  />
-                </Box>
-
-                {/* Footer button */}
-                <Box sx={{ p: { xs: 2, sm: 3 }, pt: 0, mt: "auto" }}>
-                  <MuiButton
-                    fullWidth
-                    variant="contained"
-                    onClick={() =>
-                      navigate(`/progress/${selectedClinicalLevel}`)
-                    }
-                    sx={{
-                      bgcolor: "#4040DD",
-                      "&:hover": { bgcolor: "#3636C2" },
-                      py: 1,
-                    }}
-                    startIcon={<Activity size={18} />}
-                  >
-                    View Clinical Progress
-                  </MuiButton>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* Patient Demographics Card */}
-          <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                borderRadius: 3,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-                height: "100%",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  boxShadow: "0 8px 30px rgba(0,0,0,0.1)",
-                },
-              }}
-            >
-              <CardContent sx={{ p: { xs: 2, sm: 3 }, height: "100%" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    mb: 2,
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
-                      sx={{ bgcolor: "#F3E5F5", color: "#7B1FA2", mr: 1.5 }}
-                    >
-                      <Users size={20} />
-                    </Avatar>
-                    <Typography
-                      variant="h6"
-                      fontWeight="700"
-                      color="text.primary"
-                    >
-                      Patient Demographics
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Divider sx={{ mb: 3 }} />
-
-                {dashboardStats?.patientStats?.patientDemographics && (
-                  <Box sx={{ height: 240, mt: 2 }}>
-                    <PieChartCard
-                      title=""
-                      data={dashboardStats.patientStats.patientDemographics.map(
-                        (item) => ({
-                          name: item._id,
-                          value: item.count,
-                        })
-                      )}
-                      dataKey="value"
-                    />
-                  </Box>
-                )}
-
-                <Box sx={{ textAlign: "center", mt: 3 }}>
-                  <Typography
-                    variant="body1"
-                    fontWeight="600"
-                    color="text.primary"
-                    sx={{ mb: 2 }}
-                  >
-                    Total Patients:{" "}
-                    <span style={{ color: "#4040DD" }}>
-                      {dashboardStats?.patientStats?.totalPatients || 0}
-                    </span>
-                  </Typography>
-                  <MuiButton
-                    fullWidth
-                    variant="contained"
-                    onClick={() => navigate("/allpatientdashboard")}
-                    sx={{
-                      bgcolor: "#4040DD",
-                      "&:hover": { bgcolor: "#3636C2" },
-                      py: 1,
-                    }}
-                    startIcon={<Users size={18} />}
-                  >
-                    View All Patients
-                  </MuiButton>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* Quick Actions Section */}
-          <Grid item xs={12} sx={{ mt: 2 }}>
-            <Typography
-              variant="h6"
-              fontWeight="700"
-              color="text.primary"
-              sx={{
-                mb: 3,
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-                pl: 1,
-                borderLeft: "4px solid #4040DD",
-                py: 0.5,
-              }}
-            >
-              <BoltIcon sx={{ color: "#4040DD" }} />
-              Quick Actions
-            </Typography>
-
-            <Grid container spacing={2}>
-              {[
-                {
-                  title: "New Appointment",
-                  description: "Schedule a new patient appointment",
-                  icon: <Plus size={30} />,
-                  color: "#3B82F6",
-                  bgColor: "#E8F4FE",
-                  path: "/setAppointments",
-                },
-                {
-                  title: "Patient List",
-                  description: "View and manage all patients",
-                  icon: <Users size={30} />,
-                  color: "#10B981",
-                  bgColor: "#ECFDF5",
-                  path: "/allpatientdashboard",
-                },
-                {
-                  title: "Case History",
-                  description: "Review and update submitted cases",
-                  icon: <FileText size={30} />,
-                  color: "#8B5CF6",
-                  bgColor: "#F5F3FF",
-                  path: "/casehistory",
-                },
-                {
-                  title: "My Profile",
-                  description: "View and manage your profile",
-                  icon: <User size={30} />,
-                  color: "#EF4444",
-                  bgColor: "#FEF2F2",
-                  path: "/profile",
-                },
-              ].map((action, index) => (
-                <Grid item xs={6} sm={6} md={3} key={index}>
-                  <Card
-                    sx={{
-                      borderRadius: 3,
-                      boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        transform: "translateY(-8px)",
-                        boxShadow: `0 12px 30px ${action.color}25`,
-                      },
-                      height: "100%",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <CardActionArea
-                      onClick={() => navigate(action.path)}
+                  <CardContent sx={{ p: 3, textAlign: 'center' }}>
+                    <Box sx={{ mb: 3 }}>
+                      <ProgressStatistics
+                        clinicianId={user.id}
+                        clinicLevel={selectedClinicalLevel}
+                      />
+                    </Box>
+                    <MuiButton
+                      fullWidth
+                      variant="contained"
+                      size="large"
+                      onClick={() => navigate(`/progress/${selectedClinicalLevel}`)}
                       sx={{
-                        height: "100%",
-                        p: 0,
-                        display: "flex",
-                        flexDirection: "column",
+                        background: 'linear-gradient(135deg, #34A853 0%, #137333 100%)',
+                        py: 1.5,
+                        borderRadius: 3
                       }}
+                      startIcon={<TrendingUpIcon />}
                     >
-                      <Box
-                        sx={{
-                          height: { xs: 100, sm: 120 },
-                          bgcolor: action.bgColor,
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: "100%",
-                        }}
-                      >
-                        <Avatar
-                          sx={{
-                            bgcolor: action.color,
-                            width: { xs: 50, sm: 60 },
-                            height: { xs: 50, sm: 60 },
-                          }}
-                        >
-                          {action.icon}
-                        </Avatar>
+                      View Detailed Progress
+                    </MuiButton>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              {/* Patient Demographics */}
+              <Grid item xs={12} lg={6}>
+                <Card
+                  sx={{
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(20px)',
+                    borderRadius: 4,
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    height: '100%',
+                    transition: 'transform 0.2s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      background: 'linear-gradient(135deg, #EA4335 0%, #D93025 100%)',
+                      color: 'white',
+                      p: 3,
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <PeopleIcon sx={{ fontSize: 32 }} />
+                      <Box>
+                        <Typography variant="h6" fontWeight="700">
+                          Patient Demographics
+                        </Typography>
+                        <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                          Overview of your patient base
+                        </Typography>
                       </Box>
-                      <CardContent
+                    </Box>
+                  </Box>
+
+                  <CardContent sx={{ p: 3 }}>
+                    {dashboardStats?.patientStats?.patientDemographics && (
+                      <Box sx={{ height: 240, mb: 3 }}>
+                        <PieChartCard
+                          title=""
+                          data={dashboardStats.patientStats.patientDemographics.map(
+                            (item) => ({
+                              name: item._id,
+                              value: item.count,
+                            })
+                          )}
+                          dataKey="value"
+                        />
+                      </Box>
+                    )}
+
+                    <Box sx={{ textAlign: 'center' }}>
+                      <Typography variant="h4" fontWeight="700" color="#EA4335" sx={{ mb: 1 }}>
+                        {dashboardStats?.patientStats?.totalPatients || 0}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                        Total Active Patients
+                      </Typography>
+                      <MuiButton
+                        fullWidth
+                        variant="contained"
+                        size="large"
+                        onClick={() => navigate("/allpatientdashboard")}
                         sx={{
-                          textAlign: "center",
-                          flexGrow: 1,
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
+                          background: 'linear-gradient(135deg, #EA4335 0%, #D93025 100%)',
+                          py: 1.5,
+                          borderRadius: 3
                         }}
+                        startIcon={<Users size={20} />}
                       >
-                        <Typography variant="h6" fontWeight="600" gutterBottom>
-                          {action.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {action.description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
+                        Manage Patients
+                      </MuiButton>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              {/* Quick Actions Section */}
+              <Grid item xs={12}>
+                <Box sx={{ mb: 3 }}>
+                  <Typography
+                    variant="h4"
+                    fontWeight="800"
+                    sx={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      textAlign: 'center',
+                      mb: 1
+                    }}
+                  >
+                    🚀 Quick Actions
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary" textAlign="center">
+                    Access your most-used dental practice tools
+                  </Typography>
+                </Box>
+
+                <Grid container spacing={3}>
+                  {[
+                    {
+                      title: "New Appointment",
+                      description: "Schedule patient consultation",
+                      icon: <EventAvailableIcon sx={{ fontSize: 32 }} />,
+                      color: "#4285F4",
+                      bgColor: "#E3F2FD",
+                      path: "/setAppointments",
+                    },
+                    {
+                      title: "Patient Records",
+                      description: "Access medical histories",
+                      icon: <Users size={32} />,
+                      color: "#34A853",
+                      bgColor: "#E8F5E8",
+                      path: "/allpatientdashboard",
+                    },
+                    {
+                      title: "Case Studies",
+                      description: "Review treatment cases",
+                      icon: <FileText size={32} />,
+                      color: "#FBBC04",
+                      bgColor: "#FFF8E1",
+                      path: "/casehistory",
+                    },
+                    {
+                      title: "Treatment Plans",
+                      description: "Create dental treatments",
+                      icon: <VaccinesIcon sx={{ fontSize: 32 }} />,
+                      color: "#EA4335",
+                      bgColor: "#FFEBEE",
+                      path: "/treatments",
+                    },
+                    {
+                      title: "Clinical Notes",
+                      description: "Document procedures",
+                      icon: <SecurityIcon sx={{ fontSize: 32 }} />,
+                      color: "#9C27B0",
+                      bgColor: "#F3E5F5",
+                      path: "/notes",
+                    },
+                    {
+                      title: "My Profile",
+                      description: "Update your information",
+                      icon: <User size={32} />,
+                      color: "#FF5722",
+                      bgColor: "#FBE9E7",
+                      path: "/profile",
+                    },
+                  ].map((action, index) => (
+                    <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
+                      <Card
+                        sx={{
+                          background: 'rgba(255, 255, 255, 0.95)',
+                          backdropFilter: 'blur(20px)',
+                          borderRadius: 4,
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          cursor: 'pointer',
+                          '&:hover': {
+                            transform: 'translateY(-12px) scale(1.02)',
+                            boxShadow: `0 25px 50px rgba(${action.color.slice(1).match(/.{2}/g).map(x => parseInt(x, 16)).join(',')}, 0.4)`,
+                          },
+                          height: '100%',
+                        }}
+                        onClick={() => navigate(action.path)}
+                      >
+                        <CardActionArea sx={{ height: '100%', p: 0 }}>
+                          <Box
+                            sx={{
+                              height: 120,
+                              background: `linear-gradient(135deg, ${action.color}15 0%, ${action.color}25 100%)`,
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              position: 'relative',
+                              overflow: 'hidden',
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                top: -20,
+                                right: -20,
+                                width: 80,
+                                height: 80,
+                                borderRadius: '50%',
+                                background: `${action.color}20`,
+                              }}
+                            />
+                            <Box sx={{ color: action.color, zIndex: 1 }}>
+                              {action.icon}
+                            </Box>
+                          </Box>
+                          <CardContent sx={{ p: 3, textAlign: 'center' }}>
+                            <Typography variant="h6" fontWeight="700" gutterBottom>
+                              {action.title}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {action.description}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
+              </Grid>
             </Grid>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
     );
   };
