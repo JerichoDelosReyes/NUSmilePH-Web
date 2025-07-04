@@ -7,8 +7,6 @@ import { App } from "antd";
 import { API_URL } from "../../config/api";
 
 const SideBar = ({
-  isCollapsed = true,
-  isMobile,
   sidebarVisible,
   closeSidebar,
 }) => {
@@ -105,7 +103,7 @@ const SideBar = ({
             },
           }
         );
-      } catch (apiError) {
+      } catch {
         console.log("API logout failed, but continuing with local logout");
       }
 
@@ -155,23 +153,28 @@ const SideBar = ({
     cursor: "pointer",
   };
 
-  // Updated sidebar container style - removed top padding
+  // Modern sidebar container style with glassmorphism effect
   const sidebarContainerStyle = {
     position: "fixed",
     top: 0,
     left: 0,
     height: "100vh",
     zIndex: 2000,
-    paddingTop: 0, // Removed padding top to eliminate dead space
-    width: "250px",
-    backgroundColor: "#ffffff",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-    transition: "transform 0.3s ease",
+    width: "280px", // Slightly wider for better content space
+    background: "linear-gradient(180deg, #ffffff 0%, #fafbff 100%)",
+    backdropFilter: "blur(20px)",
+    WebkitBackdropFilter: "blur(20px)",
+    boxShadow: `
+      0 25px 50px -12px rgba(0, 0, 128, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.05)
+    `,
+    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
     transform: sidebarVisible ? "translateX(0)" : "translateX(-100%)",
     pointerEvents: "auto",
-    display: "flex", // Added for better layout control
-    flexDirection: "column", // Ensure column layout
-    overflowY: "auto", // Enable scrolling for long menus
+    display: "flex",
+    flexDirection: "column",
+    overflowY: "auto",
+    borderRight: "1px solid rgba(0, 0, 128, 0.1)",
   };
 
   return (
@@ -191,213 +194,317 @@ const SideBar = ({
         role="navigation"
         aria-label="Main Navigation"
       >
-        {/* Navy blue header with white text */}
+        {/* Modern header with gradient and improved styling */}
         <div
           className="sidebar-header"
           style={{
-            padding: "22px 15px 18px",
-            backgroundColor: "#000080",
+            padding: "24px 20px",
+            background: "linear-gradient(135deg, #000080 0%, #0066cc 100%)",
             color: "white",
-            borderBottom: "1px solid rgba(255,255,255,0.15)",
+            borderBottom: "1px solid rgba(255,255,255,0.1)",
             position: "relative",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-            backgroundImage: "linear-gradient(to bottom, #000099, #000080)",
+            boxShadow: "0 4px 20px rgba(0, 0, 128, 0.15)",
+            backdropFilter: "blur(10px)",
           }}
         >
-          {/* Two-row layout to avoid overlapping */}
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               width: "100%",
-              marginBottom: "4px",
+              marginBottom: "8px",
             }}
           >
-            {/* Logo and app name in left section */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 flex: "1",
+                gap: "12px",
               }}
             >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+              {/* Modern logo with better styling */}
+              <div
                 style={{
-                  marginRight: "10px",
-                  filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))",
+                  width: "32px",
+                  height: "32px",
+                  background: "rgba(255, 255, 255, 0.15)",
+                  borderRadius: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                 }}
               >
-                <path
-                  fill="white"
-                  d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12,5.5A6.5,6.5 0 0,0 5.5,12A6.5,6.5 0 0,0 12,18.5A6.5,6.5 0 0,0 18.5,12A6.5,6.5 0 0,0 12,5.5"
-                />
-              </svg>
-              <h2
-                style={{
-                  margin: 0,
-                  fontSize: "1.4rem",
-                  fontWeight: "700",
-                  letterSpacing: "0.5px",
-                  textShadow: "0px 1px 2px rgba(0,0,0,0.3)",
-                }}
-              >
-                NUSmilePH
-              </h2>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C17.523 2 22 6.477 22 12s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12 6 6 0 010-12z"
+                    fill="white"
+                  />
+                  <circle cx="12" cy="12" r="3" fill="white" opacity="0.8" />
+                </svg>
+              </div>
+              
+              <div style={{ flex: 1 }}>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: "1.35rem",
+                    fontWeight: "700",
+                    letterSpacing: "0.3px",
+                    textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+                    background: "linear-gradient(45deg, #ffffff, #f0f8ff)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  NUSmilePH
+                </h2>
+                <p
+                  style={{
+                    margin: "2px 0 0 0",
+                    fontSize: "0.75rem",
+                    opacity: 0.8,
+                    fontWeight: "300",
+                    letterSpacing: "0.5px",
+                    color: "#e6f3ff",
+                  }}
+                >
+                  Dental Management
+                </p>
+              </div>
             </div>
 
-            {/* Close button in right section */}
+            {/* Modern close button */}
             <button
               onClick={closeSidebar}
               style={{
-                background: "rgba(255,255,255,0.15)",
-                border: "none",
-                fontSize: "16px",
+                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                fontSize: "14px",
                 cursor: "pointer",
-                width: "28px",
-                height: "28px",
+                width: "32px",
+                height: "32px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                borderRadius: "50%",
+                borderRadius: "10px",
                 color: "#ffffff",
-                transition: "all 0.2s ease",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-                margin: "0 0 0 8px", // Add margin to separate from title
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                backdropFilter: "blur(10px)",
               }}
               aria-label="Close menu"
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.25)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
                 e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.1)";
                 e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
               }}
             >
-              ✕
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
             </button>
           </div>
-
-          {/* Optional subtitle - uncomment if needed */}
-          {/* <div style={{ 
-    fontSize: "0.75rem", 
-    opacity: 0.85,
-    fontWeight: "300",
-    letterSpacing: "0.5px",
-    textAlign: "center",
-    marginTop: "4px" 
-  }}>
-    Dental Management System
-  </div> */}
         </div>
         <Sidebar
-          backgroundColor="#ffffff"
+          backgroundColor="transparent"
           collapsed={false}
           rootStyles={{
             height: "100%",
-            borderRight: "1px solid #e0e0e0",
+            borderRight: "none",
             width: "100%",
             display: "flex",
             flexDirection: "column",
+            background: "transparent",
           }}
         >
-          {/* Menu wrapper div to ensure proper height */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               height: "100%",
+              padding: "0",
             }}
           >
-            <Menu
-              style={{
-                backgroundColor: "#ffffff",
-                display: "flex",
-                flexDirection: "column",
-                height: "100%", // Ensure menu takes full height
-              }}
-              menuItemStyles={{
-                button: ({ level, active }) => ({
-                  color: "#333",
-                  fontSize: "16px",
-                  padding: "12px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  backgroundColor: active ? "#f0f5ff" : "transparent", // Lighter background for active items
-                  borderLeft: active
-                    ? "4px solid #000080" // Navy blue left border
-                    : "4px solid transparent",
-                  transition: "all 0.2s ease",
-                  "&:hover": {
-                    backgroundColor: "#f0f5ff", // Lighter hover background
-                    borderLeft: "4px solid #000080", // Navy blue left border on hover
-                  },
-                  "&.active": {
-                    backgroundColor: "#f0f5ff !important",
-                    color: "#000080 !important", // Navy blue text for active items
-                  },
-                }),
-                subMenuContent: {
-                  backgroundColor: "#ffffff",
-                  transition: "height 0.3s ease",
-                },
-              }}
-            >
-              {/* User info section - Moved to top with navy blue accent */}
-              {user && (
+            {/* User info section with modern design */}
+            {user && (
+              <div
+                style={{
+                  padding: "20px",
+                  background: "linear-gradient(135deg, #f8faff 0%, #ffffff 100%)",
+                  borderBottom: "1px solid rgba(0, 0, 128, 0.08)",
+                  margin: "0",
+                  position: "relative",
+                }}
+              >
                 <div
                   style={{
-                    padding: "15px",
-                    borderBottom: "1px solid #e0e0e0",
-                    marginBottom: "10px",
-                    backgroundImage:
-                      "linear-gradient(to right, #f0f5ff, #ffffff)", // Lighter gradient
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
                   }}
                 >
+                  {/* User avatar placeholder */}
                   <div
                     style={{
-                      fontWeight: "bold",
-                      marginBottom: "5px",
-                      color: "#000080",
+                      width: "48px",
+                      height: "48px",
+                      borderRadius: "14px",
+                      background: "linear-gradient(135deg, #000080 0%, #0066cc 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      fontWeight: "600",
+                      fontSize: "18px",
+                      boxShadow: "0 4px 12px rgba(0, 0, 128, 0.2)",
                     }}
                   >
-                    {" "}
-                    {/* Navy blue user name */}
-                    {user.username || "User"}
+                    {(user.username || "U").charAt(0).toUpperCase()}
                   </div>
-                  <div style={{ fontSize: "0.9rem", color: "#555" }}>
-                    {user.role || "Role not assigned"}
+                  
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <h3
+                      style={{
+                        margin: "0 0 4px 0",
+                        fontWeight: "600",
+                        fontSize: "15px",
+                        color: "#000080",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {user.username || "User"}
+                    </h3>
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: "13px",
+                        color: "#6b7280",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {user.role || "Role not assigned"}
+                    </p>
                   </div>
                 </div>
-              )}
+              </div>
+            )}
 
-              {/* Main menu content in a separate div with flex */}
-              <div style={{ flexGrow: 0 }}>
+            <Menu
+              style={{
+                backgroundColor: "transparent",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                padding: "8px 0",
+                border: "none",
+              }}
+              menuItemStyles={{
+                button: ({ active }) => ({
+                  color: active ? "#000080" : "#374151",
+                  fontSize: "14px",
+                  fontWeight: active ? "600" : "500",
+                  padding: "12px 20px",
+                  margin: "2px 16px",
+                  borderRadius: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  backgroundColor: active 
+                    ? "linear-gradient(135deg, #f0f5ff 0%, #e6f3ff 100%)" 
+                    : "transparent",
+                  border: active 
+                    ? "1px solid rgba(0, 0, 128, 0.15)" 
+                    : "1px solid transparent",
+                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                  position: "relative",
+                  overflow: "hidden",
+                  "&:hover": {
+                    backgroundColor: active 
+                      ? "linear-gradient(135deg, #e6f3ff 0%, #dbeafe 100%)"
+                      : "rgba(0, 0, 128, 0.04)",
+                    borderColor: "rgba(0, 0, 128, 0.1)",
+                    transform: "translateX(2px)",
+                    boxShadow: "0 2px 8px rgba(0, 0, 128, 0.08)",
+                  },
+                  "&:active": {
+                    transform: "translateX(1px) scale(0.98)",
+                  },
+                  "&::before": {
+                    content: "''",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: active ? "4px" : "0",
+                    height: "100%",
+                    backgroundColor: "#000080",
+                    borderRadius: "0 4px 4px 0",
+                    transition: "width 0.2s ease",
+                  }
+                }),
+                subMenuContent: {
+                  backgroundColor: "rgba(248, 250, 255, 0.5)",
+                  backdropFilter: "blur(10px)",
+                  borderRadius: "12px",
+                  margin: "4px 16px",
+                  border: "1px solid rgba(0, 0, 128, 0.08)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  overflow: "hidden",
+                },
+                label: {
+                  fontWeight: "600",
+                  color: "#1f2937",
+                },
+              }}            >
+              {/* Main navigation items */}
+              <div style={{ flexGrow: 0, padding: "8px 0" }}>
                 <MenuItem
                   active={activeItem === "dashboard"}
                   onClick={() => handleMenuClick("dashboard")}
                 >
+                  <span style={{ fontSize: "16px", marginRight: "8px" }}>🏠</span>
                   Dashboard
                 </MenuItem>
 
                 {/* Patient Menu - Only for Clinicians */}
                 {user?.role === "Clinician" && (
-                  <SubMenu label="Patient" defaultOpen={false}>
+                  <SubMenu 
+                    label={
+                      <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <span style={{ fontSize: "16px" }}>👤</span>
+                        Patient
+                      </span>
+                    }
+                    defaultOpen={false}
+                  >
                     <MenuItem
                       active={activeItem === "allpatientdashboard"}
                       onClick={() => handleMenuClick("allpatientdashboard")}
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>📋</span>
                       Patients
                     </MenuItem>
                     <MenuItem
                       active={activeItem === "patientdata"}
                       onClick={() => handleMenuClick("patientdata")}
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>➕</span>
                       Add Patient
                     </MenuItem>
                   </SubMenu>
@@ -409,17 +516,27 @@ const SideBar = ({
                     active={activeItem === "allpatientdashboard"}
                     onClick={() => handleMenuClick("allpatientdashboard")}
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>👤</span>
                     Patients
                   </MenuItem>
                 )}
 
                 {/* Calendar Menu - Only for Clinicians */}
                 {user?.role === "Clinician" && (
-                  <SubMenu label="Calendar" defaultOpen={false}>
+                  <SubMenu 
+                    label={
+                      <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <span style={{ fontSize: "16px" }}>📅</span>
+                        Calendar
+                      </span>
+                    }
+                    defaultOpen={false}
+                  >
                     <MenuItem
                       active={activeItem === "appointments"}
                       onClick={() => handleMenuClick("appointments")}
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>📋</span>
                       Appointments
                     </MenuItem>
                     <MenuItem
@@ -428,6 +545,7 @@ const SideBar = ({
                         handleMenuClick("setAppointments", "setAppointments")
                       }
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>➕</span>
                       Set Appointments
                     </MenuItem>
                   </SubMenu>
@@ -435,22 +553,31 @@ const SideBar = ({
 
                 {/* Progress Tracker Menu - Only for Clinicians */}
                 {user?.role === "Clinician" && (
-                  <SubMenu label="Progress Tracker" defaultOpen={false}>
+                  <SubMenu 
+                    label={
+                      <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <span style={{ fontSize: "16px" }}>📊</span>
+                        Progress Tracker
+                      </span>
+                    }
+                    defaultOpen={false}
+                  >
                     <MenuItem
                       active={activeItem === "progress"}
                       onClick={() => handleMenuClick("progress/IA")}
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>📈</span>
                       Progress
                     </MenuItem>
                     <MenuItem
                       active={activeItem === "casehistory"}
                       onClick={() => handleMenuClick("casehistory")}
                     >
+                      <span style={{ fontSize: "14px", marginRight: "8px" }}>📄</span>
                       Submitted Case History
                     </MenuItem>
                   </SubMenu>
                 )}
-
 
                 {/* Account Management - Only for Clinical Chair */}
                 {user?.role === "Clinical Chair" && (
@@ -460,6 +587,7 @@ const SideBar = ({
                       handleMenuClick("chinicalchair/user/accounts")
                     }
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>⚙️</span>
                     Account Management
                   </MenuItem>
                 )}
@@ -471,6 +599,7 @@ const SideBar = ({
                     active={activeItem === "clinicianlist"}
                     onClick={() => handleMenuClick("clinicianlist")}
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>👨‍⚕️</span>
                     Clinician List
                   </MenuItem>
                 )}
@@ -481,6 +610,7 @@ const SideBar = ({
                     active={activeItem === "clinicalInstructorlist"}
                     onClick={() => handleMenuClick("clinicalInstructorlist")}
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>👩‍🏫</span>
                     Clinical Instructor List
                   </MenuItem>
                 )}
@@ -492,6 +622,7 @@ const SideBar = ({
                     active={activeItem === "signedcasehistory"}
                     onClick={() => handleMenuClick("signedcasehistory")}
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>✅</span>
                     Signed Case History
                   </MenuItem>
                 )}
@@ -504,6 +635,7 @@ const SideBar = ({
                       handleMenuClick("chinicalchair/get/auditlog")
                     }
                   >
+                    <span style={{ fontSize: "16px", marginRight: "8px" }}>📝</span>
                     Audit Logs
                   </MenuItem>
                 )}
@@ -512,23 +644,34 @@ const SideBar = ({
               {/* Spacer to push logout to bottom */}
               <div style={{ flexGrow: 1 }}></div>
 
-              {/* Logout - Available for all roles */}
-              <div style={{ marginTop: "auto" }}>
+              {/* Modern logout button */}
+              <div 
+                style={{ 
+                  padding: "16px",
+                  borderTop: "1px solid rgba(0, 0, 128, 0.08)",
+                  background: "linear-gradient(135deg, #fef2f2 0%, #ffffff 100%)",
+                }}
+              >
                 <MenuItem
                   active={activeItem === "logout"}
                   onClick={() => handleLogout()}
                   style={{
-                    borderTop: "1px solid #e0e0e0",
-                    paddingTop: "12px",
-                    paddingBottom: "12px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    color: "#d32f2f",
-                    fontSize: "16px",
-                    fontWeight: "bold",
+                    margin: "0",
+                    borderRadius: "12px",
+                    background: "linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%)",
+                    border: "1px solid rgba(220, 38, 38, 0.2)",
+                    color: "#dc2626",
+                    fontWeight: "600",
+                    transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                    "&:hover": {
+                      background: "linear-gradient(135deg, #fecaca 0%, #fee2e2 100%)",
+                      borderColor: "rgba(220, 38, 38, 0.3)",
+                      transform: "translateY(-1px)",
+                      boxShadow: "0 4px 12px rgba(220, 38, 38, 0.15)",
+                    }
                   }}
                 >
+                  <span style={{ fontSize: "16px", marginRight: "8px" }}>🚪</span>
                   Logout
                 </MenuItem>
               </div>
